@@ -148,9 +148,9 @@ collections:
       layout: post
     output: true
     permalink: /:collection/:title/
-  projects:
-    output: true
-    permalink: /:collection/:title/
+  # projects:
+  #   output: true
+  #   permalink: /:collection/:title/
 
 announcements:
   enabled: true
@@ -182,6 +182,7 @@ kramdown:
 # Includes & excludes
 include: ["_pages", "_scripts"]
 exclude:
+  - archived_pages
   - bin/
   - CONTRIBUTING.md
   - CUSTOMIZE.md
