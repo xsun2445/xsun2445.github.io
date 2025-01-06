@@ -73,7 +73,6 @@ layout: default
     {% if page.social %}
       <div class="social">
         <div class="contact-icons">{% include social.liquid %}</div>
-
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>
     {% endif %}
@@ -81,5 +80,24 @@ layout: default
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
       {% include newsletter.liquid center=true %}
     {% endif %}
+
+    {%- comment -%} Awards {%- endcomment -%}
+    <h2>
+      <a style="color: inherit">Awards</a>
+    </h2>
+    <ul>
+      <li>T-Mobile Challenge 2024</li>
+      <li>Sensys 2022 Best Demo Runner-up</li>
+    </ul>
+
+    {%- comment -%} Teaching {%- endcomment -%}
+    <h2>
+      <a style="color: inherit">teaching</a>
+    </h2>
+    <ul>
+      <li>EE 215 Fundamentals of Electrical Engineering</li>
+      <li>EE 506 Fundamentals of Wireless Communication</li>
+    </ul>
+
   </article>
 </div>
