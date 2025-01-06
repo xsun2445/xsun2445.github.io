@@ -276,8 +276,8 @@ terser:
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Xinghua]
-  first_name: [Sun]
+  last_name: [Sun]
+  first_name: [Xinghua]
 
   style: apa
   locale: en
