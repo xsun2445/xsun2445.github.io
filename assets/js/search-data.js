@@ -9,8 +9,11 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "news-a-simple-inline-announcement",
-          title: 'A simple inline announcement.',
+  },{id: "news-we-have-presented-our-work-at-t-mobile-s-headquarter-in-bonn-germany-and-won-the-t-mobile-challenge-most-engaging-presentation-award-2024",
+          title: 'We have presented our work at T-Mobile’s headquarter in Bonn, Germany. And won...',
+          description: "",
+          section: "News",},{id: "news-we-will-be-presenting-a-demo-and-a-workshop-papaper-at-mobicom-2024-in-washington-d-c",
+          title: 'We will be presenting a Demo and a Workshop papaper at Mobicom 2024...',
           description: "",
           section: "News",},{
       id: 'light-theme',
