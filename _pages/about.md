@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Ph.D. student in ECE at University of Washington
+subtitle: ECE Ph.D. student at University of Washington
 # <a href='#'>Affiliations</a>.
 
 profile:
