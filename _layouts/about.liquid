@@ -48,7 +48,7 @@ layout: default
     <!-- News -->
     {% if page.news and site.announcements and site.announcements.enabled %}
       <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+        <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
       </h2>
       {% include news.liquid limit=true %}
     {% endif %}
@@ -64,7 +64,7 @@ layout: default
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">publications</a>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Publications</a>
       </h2>
       {% include selected_papers.liquid %}
     {% endif %}
@@ -83,7 +83,7 @@ layout: default
 
     {%- comment -%} Awards {%- endcomment -%}
     <h2>
-      <a style="color: inherit">awards</a>
+      <a style="color: inherit">Awards</a>
     </h2>
     <ul>
       <li>T-Mobile Challenge Finalist & T-Mobile Challenge Most Engaging Presentation Award 2024 </li>
@@ -92,11 +92,11 @@ layout: default
 
     {%- comment -%} Teaching {%- endcomment -%}
     <h2>
-      <a style="color: inherit">teaching</a>
+      <a style="color: inherit">Teaching</a>
     </h2>
     <ul>
-      <li>EE 215 Fundamentals of Electrical Engineering</li>
-      <li>EE 506 Fundamentals of Wireless Communication</li>
+      <li>EE 215 Fundamentals of Electrical Engineering (TA)</li>
+      <li>EE 506 Fundamentals of Wireless Communication (TA)</li>
     </ul>
 
   </article>
