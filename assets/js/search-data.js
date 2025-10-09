@@ -15,6 +15,9 @@ ninja.data = [{
           section: "News",},{id: "news-we-will-be-presenting-a-demo-and-a-workshop-paper-at-mobicom-2024-in-washington-d-c",
           title: 'We will be presenting a Demo and a Workshop paper at Mobicom 2024...',
           description: "",
+          section: "News",},{id: "news-my-first-phd-work-polysight-towards-practical-bi-static-polarimetric-imaging-using-commodity-mmwave-radars-for-material-sensing-got-accepted-to-sensys-2026",
+          title: 'My first PhD work POLySight: Towards Practical Bi-Static Polarimetric Imaging using Commodity mmWave...',
+          description: "",
           section: "News",},{
       id: 'light-theme',
       title: 'Change theme to light',
