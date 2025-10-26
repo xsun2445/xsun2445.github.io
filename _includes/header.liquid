@@ -40,8 +40,9 @@
         <span class="icon-bar bottom-bar"></span>
       </button>
 
-      <div class="collapse navbar-collapse text-right" id="navbarNav">
-        <ul class="navbar-nav ml-auto flex-nowrap">
+      {%- comment -%} <div class="collapse navbar-collapse" id="navbarNav"> {%- endcomment -%}
+      <div class="collapse navbar-collapse" style="display: flex; justify-content: space-between; width: 100%;">
+        <ul class="navbar-nav flex-nowrap">
           {% for page in site.pages %}
             {% if page.permalink == '/' %} {% assign about_title = page.title %} {% endif %}
           {% endfor %}
@@ -53,6 +54,21 @@
               {% if page.permalink == '/' %}
                 <span class="sr-only">(current)</span>
               {% endif %}
+            </a>
+          </li>
+
+
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
+              Home
+            </a>
+          </li>
+
+          <!-- Publications -->
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="scrollToSection('publications'); return false;">
+              Publications
             </a>
           </li>
 
@@ -117,6 +133,10 @@
               {% endif %}
             {% endif %}
           {% endfor %}
+        </ul>
+
+        <!-- Right-aligned navigation -->
+        <ul class="navbar-nav flex-nowrap">
           {% if site.search_enabled %}
             <!-- Search -->
             <li class="nav-item">
@@ -126,8 +146,11 @@
             </li>
           {% endif %}
           {% if site.enable_darkmode %}
+            <!-- Spacer to push toggle to right -->
+            <li style="flex: 1;"></li>
+            
             <!-- Toogle theme mode -->
-            <li class="toggle-container">
+            <li class="toggle-container"">
               <button id="light-toggle" title="Change theme">
                 <i class="ti ti-sun-moon" id="light-toggle-system"></i>
                 <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
@@ -136,6 +159,9 @@
             </li>
           {% endif %}
         </ul>
+
+
+
       </div>
     </div>
   </nav>

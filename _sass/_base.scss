@@ -801,9 +801,26 @@ footer.sticky-bottom {
             border-color: var(--global-theme-color);
           }
         }
+        // a.award.btn {
+        //   border-color: var(--global-highlight-color);
+        // }
         a.award.btn {
           border-color: var(--global-highlight-color);
+          // background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+          // color: #fff !important;
+          // font-weight: bold;
+          // position: relative;
+          // animation: awardPulse 2s ease-in-out infinite;
+          border: 2px solid #ff6b6b !important;
         }
+        a.award.btn::before {
+          content: "🏆 ";
+          margin-right: 4px;
+        }
+        // @keyframes awardPulse {
+        //   0%, 100% { transform: scale(1); }
+        //   50% { transform: scale(1.05); }
+        // }
       }
 
       .badges {

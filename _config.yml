@@ -199,6 +199,10 @@ exclude:
   - package-lock.json
   - _pages/about_einstein.md
   - _pages/about_archived.md
+  - _pages/cv.md
+  - _pages/news.md
+  - _pages/profiles.md
+  - _pages/publications.md
   - purgecss.config.js
   - README.md
   - readme_preview/
@@ -214,12 +218,12 @@ plugins:
   - jekyll-feed
   - jekyll-get-json
   - jekyll-imagemagick
-  - jekyll-jupyter-notebook
+  - jekyll-jupyter-notebook  # Disabled: requires Jupyter installation
   - jekyll-link-attributes
   - jekyll-minifier
   - jekyll-paginate-v2
   - jekyll-regex-replace
-  - jekyll/scholar
+  - jekyll-scholar
   - jekyll-sitemap
   - jekyll-tabs
   - jekyll-toc

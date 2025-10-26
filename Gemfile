@@ -21,6 +21,8 @@ group :jekyll_plugins do
     gem 'terser'
     gem 'unicode_utils'
     gem 'webrick'
+    # gem 'sassc-rails'
+    # gem 'jekyll-sass-converter', '~> 3.0', '>= 3.0.0'
 end
 group :other_plugins do
     gem 'css_parser'
