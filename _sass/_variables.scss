@@ -19,12 +19,9 @@ $green-color-lime: #b7d12a !default;
 $green-color-dark: #009f06 !default;
 $green-color-light: #ddffdd !default;
 $green-color-bright: #11d68b !default;
-// $purple-color: #b509ac !default;
-// $purple-color: #4B2E83 !default;
 $purple-color: #764fd1 !default;
 $pink-color: #f92080 !default;
 $light-purple-color: color.adjust($purple-color, $lightness: 10%);
-// $light-purple-color: color.adjust($purple-color, $lightness: 25%);
 $pink-color-light: #ffdddd !default;
 $yellow-color: #efcc00 !default;
 
