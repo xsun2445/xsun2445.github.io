@@ -47,9 +47,7 @@ layout: default
 
     <!-- News -->
     {% if page.news and site.announcements and site.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
-      </h2>
+      <h2>News</h2>
       {% include news.liquid limit=true %}
     {% endif %}
 
@@ -64,9 +62,7 @@ layout: default
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <div id="publications">
-        <h2>
-          <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Publications</a>
-        </h2>
+        <h2>Publications</h2>
         {% include selected_papers.liquid %}
       </div>
     {% endif %}
@@ -84,10 +80,8 @@ layout: default
     {% endif %}
 
     {%- comment -%} Awards {%- endcomment -%}
-    <h2>
-      <a style="color: inherit">Awards</a>
-    </h2>
-    <ul style="list-style: none; padding: 0; margin-top: 0.rem;">
+    <h2>Awards</h2>
+    <ul class="awards-list" style="list-style: none; padding: 0; margin-top: 0.rem;">
       <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
         {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
         UW ECE Research Showcase Best Demo Award sponsored by Apple (2025)
@@ -104,23 +98,31 @@ layout: default
     </ul>
 
     {%- comment -%} Teaching {%- endcomment -%}
-    <h2>
-      <a style="color: inherit">Teaching</a>
-    </h2>
+    <h2>Services</h2>
     <ul style="list-style: none; padding: 0; margin-top: 0.rem;">
       <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
         {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-        UW EE 419/565 Computer Communication Networks - Teaching Assistant (Spring 2025)
+        Invited Reviewer for ACM Transactions on Computing for Healthcare (HEALTH)
         {%- comment -%} </a> {%- endcomment -%}
       </li>
       <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
         {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-        UW EE 417/506 Modern Wireless Communications - Teaching Assistant (Winter 2025)
+        Teaching Assistant - UW EE 497/598 Engineering Entrepreneurial Capstone (Winter 2026)
         {%- comment -%} </a> {%- endcomment -%}
       </li>
       <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
         {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-        UW EE 215 Fundamentals of Electrical Engineering - Teaching Assistant (Winter 2024)
+        Teaching Assistant - UW EE 419/565 Computer Communication Networks (Spring 2025)
+        {%- comment -%} </a> {%- endcomment -%}
+      </li>
+      <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
+        {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
+        Teaching Assistant - UW EE 417/506 Modern Wireless Communications (Winter 2025)
+        {%- comment -%} </a> {%- endcomment -%}
+      </li>
+      <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
+        {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
+        Teaching Assistant - UW EE 215 Fundamentals of Electrical Engineering (Winter 2024)
         {%- comment -%} </a> {%- endcomment -%}
       </li>
     </ul>

@@ -1,11 +1,8 @@
-"akshay":
-  - firstname: ["Akshay"]
-    url: https://www.akshaygadre.com/
+# "gadre":
+#   - firstname: ["Akshay", "A."]
+#     url: https://www.akshaygadre.com/
 
-"jingping":
-  - firstname: ["Jingping", "Nie"]
-    url: https://jingpingnie.com/
+# "jingping":
+#   - firstname: ["Jingping", "Nie"]
+#     url: https://jingpingnie.com/
 
-"gadre":
-  - firstname: ["Gadre"]
-    url: www.google.com
