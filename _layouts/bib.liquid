@@ -6,7 +6,6 @@
   {%- comment -%} <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}"> {%- endcomment -%}
   {%- comment -%} <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-12{% endif %}"> {%- endcomment -%}
   <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8 col-lg-9{% else %}col-sm-12{% endif %}">
-
     <!-- Title -->
     <div class="title">{{ entry.title }}</div>
     <!-- Author -->
@@ -372,7 +371,9 @@
               muted
               playsinline
               preload="auto"
-              {% if entry.preview_poster %}poster="{{ entry.preview_poster | relative_url }}"{% endif %}
+              {% if entry.preview_poster %}
+                poster="{{ entry.preview_poster | relative_url }}"
+              {% endif %}
               controlslist="nodownload nofullscreen noremoteplayback"
               disablepictureinpicture
               tabindex="-1"
@@ -388,7 +389,9 @@
               muted
               playsinline
               preload="auto"
-              {% if entry.preview_poster %}poster="{{ entry.preview_poster | prepend: '/assets/publication_preview/' | relative_url }}"{% endif %}
+              {% if entry.preview_poster %}
+                poster="{{ entry.preview_poster | prepend: '/assets/publication_preview/' | relative_url }}"
+              {% endif %}
               controlslist="nodownload nofullscreen noremoteplayback"
               disablepictureinpicture
               tabindex="-1"
