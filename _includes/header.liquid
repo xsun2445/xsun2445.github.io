@@ -2,25 +2,7 @@
   <!-- Nav Bar -->
   <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
     <div class="container">
-      {% if page.permalink != '/' %}
-        <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
-          {% if site.title == 'blank' %}
-            {% if site.first_name %}
-              <span class="font-weight-bold">
-                {{- site.first_name -}}
-              </span>
-            {% endif %}
-            {% if site.middle_name %}
-              {{- site.middle_name -}}
-            {% endif %}
-            {% if site.last_name %}
-              {{- site.last_name -}}
-            {% endif %}
-          {% else %}
-            {{- site.title -}}
-          {% endif %}
-        </a>
-      {% elsif site.enable_navbar_social %}
+      {% if page.permalink == '/' and site.enable_navbar_social %}
         <!-- Social Icons -->
         <div class="navbar-brand social">{% include social.liquid %}</div>
       {% endif %}
@@ -43,12 +25,20 @@
 
           <!-- Home -->
           <li class="nav-item">
-            <a class="nav-link" href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;"> Home </a>
+            {% if page.permalink == '/' %}
+              <a class="nav-link" href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;"> Home </a>
+            {% else %}
+              <a class="nav-link" href="{{ '/' | relative_url }}"> Home </a>
+            {% endif %}
           </li>
 
           <!-- Publications -->
           <li class="nav-item">
-            <a class="nav-link" href="#" onclick="scrollToSection('publications'); return false;"> Publications </a>
+            {% if page.permalink == '/' %}
+              <a class="nav-link" href="#" onclick="scrollToSection('publications'); return false;"> Publications </a>
+            {% else %}
+              <a class="nav-link" href="{{ '/#publications' | relative_url }}"> Publications </a>
+            {% endif %}
           </li>
 
           <!-- Other pages -->

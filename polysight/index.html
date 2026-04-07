@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="POLySight: Towards Practical Bi-Static Polarimetric Imaging using Commodity mmWave Radars for Material Sensing — ACM SenSys 2026">
+  <meta name="keywords" content="POLySight, mmWave, radar, polarimetric imaging, material sensing">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>POLySight</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%22 y=%2255%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2280%22>🌐</text></svg>">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- ─── Hero ─────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title gradient-title">
+            POLySight
+          </h1>
+          <h1 class="title is-2 publication-title">
+            Towards Practical Bi-Static Polarimetric Imaging using Commodity mmWave Radars for Material Sensing
+          </h1>
+          <h2 class="title is-4 publication-venue" style="text-align: center; width: 100%; line-height: 1.2; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+            SenSys 2026
+          </h2>
+
+          <div class="is-size-5 publication-authors" style="line-height: 3">
+            <span class="author-block">
+              <a href="../">Xinghua Sun</a>,&nbsp;</span>
+            <span class="author-block">
+              <a href="https://www.akshaygadre.com/">Akshay Gadre</a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <img src="./static/images/University_of_Washington_seal.svg.png" style="height: 1.5em; vertical-align: text-bottom; margin-right: 0.5em;">
+              University of Washington
+            </span>
+            <!-- &nbsp;&nbsp;
+            <span class="author-block">
+              <img src="./static/images/newt_lab_logo.png" style="height: 1.5em; vertical-align: text-bottom; margin-right: 0.5em;">
+              NEWT Lab
+            </span> -->
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="../assets/pdf/Sensys_2026_PolySight.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-youtube"></i></span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://github.com/xsun2445/polysight" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Teaser ────────────────────────────────────────────────────────────── -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body has-text-centered" style="padding-bottom: 0;">
+      <div style="display:inline-block; width:80%;">
+        <img src="./static/images/paper/fig2_platform.png" alt="POLySight system platform" style="width:100%; border-radius:8px;">
+        <h2 class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem;">
+          POLySight develops a multi-static imaging platform by synchronizing spatially separated mmWave radars
+          mounted on a 2D motion stage for synthesizing a large aperture to image and classify objects' materials.
+        </h2>
+        <h2 class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem;">
+          PolySight will generate SAR of 3 channels: H (TX -> HRX), V (TX -> VRX) and a derived channel P = H / V.
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Abstract ─────────────────────────────────────────────────────────── -->
+<section class="section" style="padding-top: 1.5rem;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Accurately identifying materials in real-world environments is critical for applications in robotics,
+            security screening and autonomous systems. While more expensive approaches for material characterization
+            such as spectroscopy or ellipsometry are ill-suited for large scale deployment, RF-based solutions
+            present a new potential low-cost alternative. Prior RF-based material sensing approaches are either
+            too invasive, suffer from lower resolution or are highly specialized in particular materials,
+            presenting a need for a more general-purpose solution.
+          </p>
+          <p>
+            This paper presents POLySight, a mmWave radar based material sensing solution that uses the
+            <strong>polarization</strong> of signals <strong>reflected</strong> from target objects. POLySight synthesizes a wide-aperture
+            bi-static mmWave radar system by <strong>synchronizing distributed commodity radars</strong> to extract polarimetry
+            at large incidence angles. The solution extracts the high-resolution polarimetric image of the
+            object from these synchronized measurements by performing synthetic aperture radar (SAR) based
+            imaging. Finally, we leverage the ratio of the amplitude in co-polarized and cross-polarized
+            received signals to classify solids, liquids and powders. Our evaluation across 36 different
+            materials demonstrates an accuracy of <strong>95.74%</strong>, <strong>96.50%</strong> and
+            <strong>100%</strong> for classifying 23 solids, 8 liquids and 4 powders, and a median error
+            of <strong>1.548%</strong> in determining the concentration of a sugar-water solution.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── Key Contributions ────────────────────────────────────────────────── -->
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Key Contributions</h2>
+        <div class="content has-text-justified">
+          <ol>
+            <li><strong>Polarimetry at mmWave frequencies.</strong> We present the first measurement study
+            demonstrating that everyday materials exhibit separable polarization signatures at 77 GHz,
+            especially near each material's Brewster's angle (55°–65°). Co-locating TX and RX provides
+            almost no contrast; large incidence angles unlock it.</li>
+            <li><strong>Distributed mmWave synchronization platform.</strong> POLySight engineers a direct
+            over-the-air path between commodity TI AWR2243 radars to achieve coarse hardware-trigger
+            synchronization and per-chirp phase/frequency offset correction, reaching a synchronization
+            error of just 138 Hz.</li>
+            <li><strong>High-resolution SAR imaging &amp; material classification.</strong> A 2D linear
+            motion stage synthesizes a 40 cm × 70 cm aperture, yielding a spatial resolution of
+            4.9 mm × 2.8 mm. KNN classification over H, V, and polarization-ratio (P) channels achieves
+            state-of-the-art accuracy across solids, liquids, and powders.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── System Overview ──────────────────────────────────────────────────── -->
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">System Overview</h2>
+    <div class="has-text-centered">
+      <div style="display:inline-block; width:80%;">
+        <img src="./static/images/paper/fig5_overview.png" alt="POLySight system overview" style="width:100%; border-radius:8px;">
+        <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
+          POLySight system pipeline: synchronized bi-static radars capture H and V polarization channels
+          at large incidence angles, SAR imaging forms high-resolution reflectivity maps, and KNN
+          classification identifies materials from their polarimetric signatures.
+        </p>
+      </div>
+    </div>
+    
+    <!-- <h2 class="title is-3 has-text-centered">Motivation Study</h2>
+    
+    <div class="columns is-centered" style="margin-top: 1rem;">
+      <div class="column is-four-fifths">
+        <figure class="image">
+          <img src="./static/images/paper/polysight_blog_motivation.png" alt="Motivation study">
+        </figure>
+        <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
+          Motivation study: polarization ratios are nearly identical at 0° incidence (left) but
+          clearly separable at large incidence angles (right).
+        </p>
+      </div>
+    </div> -->
+
+  </div>
+</section>
+
+<!-- ─── Motivation Study ──────────────────────────────────────────────────── -->
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">    
+    <h2 class="title is-3 has-text-centered">Motivation Study</h2>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            Conventional mmWave SAR images materials by their reflectivity, but many everyday
+            materials such as acrylic, PET, and copper exhibit nearly identical reflectivity at
+            normal incidence that makes them indistinguishable to a mono-static radar (incident angle = 0°). 
+            Additinoally, the phase change of reflected signal at low incident and reflecting angles are nearly zero, 
+            which further reduces the material contrast. This is because the reflectivity at normal incidence is 
+            dominated by the real part of the material's permittivity, which is similar across many materials. 
+            Furthermore, the reflected signal is often dominated by surface geometry (shape, distance), which is largely insensitive to material properties
+          </p>
+          <p>
+            Our key insight is that the <strong>polarization response</strong> of a material changes dramatically
+            with the incidence angle, and the contrast between materials grows sharply near each
+            material's <strong>Brewster's angle</strong> (typically 55°–65°).
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="has-text-centered" style="margin-top: 1rem;">
+      <div style="display:inline-block; width:80%;">
+        <img src="./static/images/paper/polysight_blog_motivation.png" alt="Polarization separability vs. incidence angle" style="width:100%; border-radius:8px;">
+        <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
+          Acrylic and PET are indistinguishable in a front-on (0°) polarimetric image,
+          but become clearly separable at high incidence angles near the Brewster's angle.
+        </p>
+      </div>
+    </div>
+</section>
+
+
+<!-- ─── Challenges ──────────────────────────────────────────────────── -->
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Challenges</h2>
+
+    <div class="columns is-centered" style="margin-top: 2rem;">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            Exploiting this insight is hard in practice. Capturing reflections at 55°&ndash;65°
+            requires the transmitter and receiver antennas to be separated by roughly a meter,
+            but commodity mmWave radars are built for compact mono-static operation with TX
+            and RX placed only millimeters apart. POLySight therefore has to <strong>turn
+            multiple commodity radars into a single distributed bi-static radar</strong>
+            &mdash; one transmitter and two orthogonally polarized receivers placed
+            ~1.5&nbsp;m away on a 2D motion stage to synthesize a wide aperture.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="has-text-centered" style="margin-top: 1rem;">
+      <div style="display:inline-block; width:80%;">
+        <!-- TODO: replace with placement / geometry figure when ready -->
+        <div style="width:100%; aspect-ratio: 16/6; background: #f0f0f0; border: 2px dashed #bbb; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #888; font-size: 0.95rem;">
+          [Figure placeholder: distributed bi-static radar placement and TX/RX geometry]
+        </div>
+        <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
+          Distributed bi-static placement: a 45°-tilted TX and two orthogonally polarized RX
+          radars separated by ~1.5&nbsp;m to reach high incidence angles.
+        </p>
+      </div>
+    </div>
+
+    <div class="columns is-centered" style="margin-top: 2rem;">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            Wiring radars together physically is only half the problem &mdash; they also need
+            to be <strong>synchronized in time and phase</strong>. Commodity FMCW receivers
+            sample the IF signal in only a 0.257&nbsp;&micro;s window out of a
+            128.5&nbsp;&micro;s chirp, so two unsynchronized radars have less than a 0.2%
+            chance of even seeing each other. Even after a shared hardware trigger aligns
+            them into this window, each chirp still carries a random per-chirp frequency
+            (&Delta;<i>f</i>) and phase (&Delta;&phi;) offset from the local oscillator that
+            destroys the coherence SAR imaging requires. With no practical way to place a
+            known reference reflector in the scene, POLySight repurposes the
+            <strong>direct over-the-air path between the radars</strong> as a per-chirp
+            reference, isolating it via receive-side beamforming and using its peak to
+            compensate every chirp &mdash; achieving a residual synchronization error of just
+            <strong>138&nbsp;Hz</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="has-text-centered" style="margin-top: 1rem;">
+      <div style="display:inline-block; width:80%;">
+        <!-- TODO: replace with sync figure (defocused vs synchronized SAR) when ready -->
+        <div style="width:100%; aspect-ratio: 16/6; background: #f0f0f0; border: 2px dashed #bbb; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #888; font-size: 0.95rem;">
+          [Figure placeholder: defocused vs. phase-synchronized SAR using direct-path reference]
+        </div>
+        <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
+          Without per-chirp phase synchronization the SAR image is completely defocused;
+          referencing the direct path between radars recovers a sharp, high-resolution image.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ─── Results ──────────────────────────────────────────────────────────── -->
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Results</h2>
+
+    <!-- Qualitative SAR images -->
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            We first inspect the SAR images that POLySight produces for a set of visually
+            similar materials &mdash; rubber, alumina, cardboard, acrylic, silicone rubber,
+            plastic, and copper tape. The horizontal (<i>H</i>) and vertical (<i>V</i>)
+            polarization images alone leave many materials looking nearly identical, mirroring
+            what a conventional mmWave SAR sees. The <strong>polarization-ratio
+            (<i>P</i>)</strong> channel, however, brings out clear contrast between materials
+            with similar reflectivity but different permittivity &mdash; exactly the
+            polarimetric signal POLySight relies on for classification.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="has-text-centered" style="margin-top: 1rem;">
+      <div style="display:inline-block; width:80%;">
+        <img src="./static/images/paper/fig_sar_images.png" alt="SAR images" style="width:100%; border-radius:8px;">
+        <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
+          SAR images at &theta;<sub>i</sub>&nbsp;=&nbsp;50°: horizontal (H), vertical (V), and
+          polarization-ratio (P) channels across 7 materials. The P channel reveals material
+          contrast invisible to H or V alone.
+        </p>
+      </div>
+    </div>
+
+    <!-- Incidence-angle sweep -->
+    <div class="columns is-centered" style="margin-top: 2.5rem;">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            To confirm that the contrast really comes from polarimetry at high incidence
+            angles, we image the same materials at three angles &mdash; the conventional
+            mono-static 0°, 55°, and 60°. At 0° only a few materials with extreme
+            permittivity (copper, rubber, glass fiber) stand out and the rest collapse onto
+            each other. At 55° the contrast already grows substantially, and at 60°
+            &mdash; near acrylic's Brewster angle &mdash; cardboard, PET, and acrylic
+            finally separate cleanly. This is the &ldquo;Goldilocks zone&rdquo; that motivates
+            POLySight's bi-static design.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="has-text-centered" style="margin-top: 1rem;">
+      <div style="display:inline-block; width:80%;">
+        <img src="./static/images/paper/fig_material_contrast.png" alt="Material contrast across angles" style="width:100%; border-radius:8px;">
+        <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
+          Material contrast across incident angles. Materials indistinguishable at 0° become
+          clearly separable at 55°&ndash;60°, near acrylic's Brewster angle.
+        </p>
+      </div>
+    </div>
+
+    <!-- Classification accuracy -->
+    <div class="columns is-centered" style="margin-top: 2.5rem;">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            We then evaluate POLySight's pixel-wise classification accuracy on 36 materials
+            spanning <strong>23 solids, 8 liquids, and 4 powders</strong>, using a weighted
+            KNN over the calibrated H, V, and P channels. Compared to using only the
+            horizontal channel &mdash; analogous to a conventional mmWave SAR &mdash;
+            polarimetry boosts solid classification from <strong>48.46%</strong> to
+            <strong>95.74%</strong>, liquids from <strong>72.87%</strong> to
+            <strong>96.50%</strong>, and powders from <strong>58.69%</strong> to
+            <strong>100%</strong>. Capturing a second incidence angle further pushes the
+            solid accuracy to <strong>99.34%</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="has-text-centered" style="margin-top: 1rem;">
+      <div style="display:inline-block; width:80%;">
+        <img src="./static/images/paper/fig_results3.png" alt="Confusion matrices" style="width:100%; border-radius:8px;">
+        <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
+          Confusion matrices for pixel-wise material classification. POLySight achieves
+          <strong>95.74%</strong> accuracy across 23 solids (improving to
+          <strong>99.34%</strong> with two incidence angles), <strong>96.50%</strong> on
+          8 liquids, and <strong>100%</strong> on 4 powders.
+        </p>
+      </div>
+    </div>
+
+    <!-- Sugar concentration case study -->
+    <div class="columns is-centered" style="margin-top: 2.5rem;">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            Beyond discrete classification, POLySight is sensitive enough to track continuous
+            material changes. We test this by progressively dissolving sugar into 650&nbsp;ml
+            of water and measuring the polarization angle and real permittivity at each
+            concentration. The polarization angle decreases and the real permittivity
+            increases monotonically with concentration, and a simple linear regression on the
+            two features predicts sugar concentration with a median error of just
+            <strong>1.548%</strong> by weight &mdash; suggesting applications such as
+            non-contact concentration sensing for medical and quality-control settings.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="has-text-centered" style="margin-top: 1rem;">
+      <div style="display:inline-block; width:80%;">
+        <img src="./static/images/paper/polysight_blog_front_2.png" alt="Qualitative results" style="width:100%; border-radius:8px;">
+        <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
+          POLySight's polarimetric P channel clearly differentiates transparent and visually
+          similar materials that look identical under optical cameras and conventional mmWave
+          SAR.
+        </p>
+      </div>
+    </div>
+
+    <!-- ─── Permittivity Table ─────────────────────────────────────────────── -->
+    <div class="has-text-centered" style="margin-top: 3rem;">
+      <div style="display:inline-block; width:90%;">
+        <div style="display: flex; gap: 2rem; justify-content: center; align-items: flex-start; flex-wrap: wrap;">
+          <!-- Left column: Solids 1–18 -->
+          <table style="border-collapse: collapse; font-size: 0.9rem; flex: 1; min-width: 320px;">
+            <thead>
+              <tr style="border-top: 2px solid #333; border-bottom: 1px solid #333;">
+                <th style="text-align: center; padding: 0.4rem 0.75rem;">Materials</th>
+                <th style="text-align: center; padding: 0.4rem 0.75rem;">&epsilon;&prime;</th>
+                <th style="text-align: center; padding: 0.4rem 0.75rem;">&minus;j&epsilon;&Prime;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: rgba(128,0,128,0.06);"><td colspan="3" style="padding: 0.35rem 0.75rem; font-weight: 500; text-align:center;">Solids (1&ndash;19)</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">1. Metal</td><td style="text-align:center;">1.29e5</td><td style="text-align:center;">3.05e5</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">2. Acrylic (1&nbsp;mm)</td><td style="text-align:center;">3.56</td><td style="text-align:center;">0.18</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">3. Acrylic (3&nbsp;mm)</td><td style="text-align:center;">4.00</td><td style="text-align:center;">0.40</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">4. Polycarbonate (1&nbsp;mm)</td><td style="text-align:center;">4.26</td><td style="text-align:center;">0.21</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">5. PET (0.5&nbsp;mm)</td><td style="text-align:center;">3.78</td><td style="text-align:center;">0.70</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">6. PET (1&nbsp;mm)</td><td style="text-align:center;">3.83</td><td style="text-align:center;">0.73</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">7. Vinyl (0.37&nbsp;mm)</td><td style="text-align:center;">3.65</td><td style="text-align:center;">0.70</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">8. PVC</td><td style="text-align:center;">4.15</td><td style="text-align:center;">0.81</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">9. PLA (ender, 1&nbsp;mm)</td><td style="text-align:center;">3.79</td><td style="text-align:center;">0.34</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">10. PLA (hyper, 1&nbsp;mm)</td><td style="text-align:center;">4.21</td><td style="text-align:center;">0.30</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">11. TPU (1&nbsp;mm)</td><td style="text-align:center;">3.91</td><td style="text-align:center;">0.21</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">12. Ceramic</td><td style="text-align:center;">4.75</td><td style="text-align:center;">2.43</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">13. Rubber</td><td style="text-align:center;">5.06</td><td style="text-align:center;">1.11</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">14. Silicone Rubber</td><td style="text-align:center;">3.52</td><td style="text-align:center;">0.82</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">15. Glass (2&nbsp;mm)</td><td style="text-align:center;">7.26</td><td style="text-align:center;">0.85</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">16. Glass Fiber</td><td style="text-align:center;">4.69</td><td style="text-align:center;">0.70</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">17. Paper (smooth)</td><td style="text-align:center;">4.63</td><td style="text-align:center;">0.31</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">18. Cardboard</td><td style="text-align:center;">5.24</td><td style="text-align:center;">0.01</td></tr>
+              <tr style="border-bottom: 2px solid #333;"><td style="padding: 0.25rem 0.75rem; text-align:center;">19. Cardboard (rough)</td><td style="text-align:center;">4.54</td><td style="text-align:center;">0.56</td></tr>
+            </tbody>
+          </table>
+
+          <!-- Right column: Solids 19–23, Liquids, Powders -->
+          <table style="border-collapse: collapse; font-size: 0.9rem; flex: 1; min-width: 320px;">
+            <thead>
+              <tr style="border-top: 2px solid #333; border-bottom: 1px solid #333;">
+                <th style="text-align: center; padding: 0.4rem 0.75rem;">Materials</th>
+                <th style="text-align: center; padding: 0.4rem 0.75rem;">&epsilon;&prime;</th>
+                <th style="text-align: center; padding: 0.4rem 0.75rem;">&minus;j&epsilon;&Prime;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: rgba(128,0,128,0.06);"><td colspan="3" style="padding: 0.35rem 0.75rem; font-weight: 500; text-align:center;">Solids (20&ndash;23)</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">20. Fabric</td><td style="text-align:center;">2.21</td><td style="text-align:center;">0.13</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">21. Wood (thin, smooth)</td><td style="text-align:center;">2.61</td><td style="text-align:center;">0.71</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">22. Wood (rough)</td><td style="text-align:center;">5.02</td><td style="text-align:center;">0.81</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">23. Cork</td><td style="text-align:center;">10.6</td><td style="text-align:center;">N/A</td></tr>
+
+              <tr style="background: rgba(128,0,128,0.06); border-top: 1px solid #ccc;"><td colspan="3" style="padding: 0.35rem 0.75rem; font-weight: 500; text-align:center;">Liquids</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">24. Soy Sauce (w/ glass)</td><td style="text-align:center;">4.30</td><td style="text-align:center;">0.53</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">25. Corn Oil (w/ glass)</td><td style="text-align:center;">6.01</td><td style="text-align:center;">2.69</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">26. Corn Syrup (w/ glass)</td><td style="text-align:center;">6.42</td><td style="text-align:center;">0.05</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">27. Water (w/ glass)</td><td style="text-align:center;">3.66</td><td style="text-align:center;">0.43</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">28. Cane Sugar (1.3%, w/ glass)</td><td style="text-align:center;">3.72</td><td style="text-align:center;">0.43</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">29. Cane Sugar (3.8%, w/ glass)</td><td style="text-align:center;">3.78</td><td style="text-align:center;">0.44</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">30. Cane Sugar (5.1%, w/ glass)</td><td style="text-align:center;">3.81</td><td style="text-align:center;">0.43</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">31. Cane Sugar (6.3%, w/ glass)</td><td style="text-align:center;">3.89</td><td style="text-align:center;">0.41</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">32. Cane Sugar (7.4%, w/ glass)</td><td style="text-align:center;">3.96</td><td style="text-align:center;">0.39</td></tr>
+
+              <tr style="background: rgba(128,0,128,0.06); border-top: 1px solid #ccc;"><td colspan="3" style="padding: 0.35rem 0.75rem; font-weight: 500; text-align:center;">Powders</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">33. Sugar Powder (w/ plastic)</td><td style="text-align:center;">4.46</td><td style="text-align:center;">0.42</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">34. Salt (w/ plastic)</td><td style="text-align:center;">4.30</td><td style="text-align:center;">0.94</td></tr>
+              <tr><td style="padding: 0.25rem 0.75rem; text-align:center;">35. Protein Powder (w/ plastic)</td><td style="text-align:center;">5.74</td><td style="text-align:center;">0.45</td></tr>
+              <tr style="border-bottom: 2px solid #333;"><td style="padding: 0.25rem 0.75rem; text-align:center;">36. Milk Powder (w/ plastic)</td><td style="text-align:center;">4.88</td><td style="text-align:center;">0.74</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
+          Estimated permittivity &epsilon; = &epsilon;&prime; &minus; j&epsilon;&Prime; at 76&ndash;81&nbsp;GHz across 36 materials spanning solids, liquids, and powders.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ─── BibTeX ────────────────────────────────────────────────────────────── -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content has-text-centered">
+    <h2 class="title">BibTeX</h2>
+    <p>If you find this work useful, please consider citing our paper!</p>
+    <pre style="text-align: left;"><code>@inproceedings{polysight,
+  author    = {Sun, Xinghua and Gadre, Akshay},
+  title     = {Towards Practical Bi-Static Polarimetric Imaging Using Commodity mmWave Radars for Material Sensing},
+  booktitle = {Proceedings of the ACM/IEEE International Conference on Embedded Artificial Intelligence and Sensing Systems (SenSys '26)},
+  year      = {2026},
+  doi       = {10.1145/3774906.3800470},
+  publisher = {ACM},
+  address   = {New York, NY, USA},
+  month     = {May},
+}</code></pre>
+  </div>
+</section>
+
+<!-- ─── Related Projects ─────────────────────────────────────────────────── -->
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Related Projects</h2>
+    <div class="related-project-card" onclick="window.location.href='../muldar/'">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <p class="is-size-5" style="font-weight: 500; margin-bottom: 0.3rem;">
+            MulDar: Unleashing the Potential of Distributed COTS mmWave Radar by Exploiting Cross-Device Channels
+          </p>
+          <p class="is-size-6" style="margin-bottom: 0.2rem;">
+            <a href="../">Xinghua Sun</a>, Qiancheng Li, and <a href="https://www.akshaygadre.com/">Akshay Gadre</a>
+          </p>
+          <p class="is-size-6" style="font-style: italic; margin-bottom: 0.6rem;">
+            To appear in MobiSys, 2026
+          </p>
+          <a href="../muldar/"
+             class="button is-small is-outlined is-dark">Website</a>
+          <a href="https://github.com/xsun2445/MulDar"
+             class="button is-small is-outlined is-dark">GitHub</a>
+          <a href="https://huggingface.co/datasets/xinghs/MulDar_Dataset"
+             class="button is-small is-outlined is-dark">🤗 Dataset</a>
+          <a href="../muldar/static/pdf/Mobisys_2026_MulDar.pdf"
+             class="button is-small is-outlined is-dark">PDF</a>
+        </div>
+        <div class="column is-narrow">
+          <a href="../muldar/">
+            <video autoplay loop muted playsinline preload="auto"
+                   style="width: 220px; border-radius: 6px;">
+              <source src="../muldar/video/website_preview.mp4" type="video/mp4">
+            </video>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ───────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            <a href="../" class="home-link">‹ Xinghua Sun's Homepage</a>
+            &nbsp;·&nbsp;
+            Website template from <a href="https://nerfies.github.io/">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

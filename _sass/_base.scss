@@ -554,7 +554,7 @@ footer.sticky-bottom {
 
   h1 {
     color: var(--global-theme-color);
-    font-size: 5rem;
+    font-size: 2.5rem;
   }
 }
 
@@ -772,11 +772,12 @@ footer.sticky-bottom {
 
       .author {
         a {
-          border-bottom: 1px dashed var(--global-theme-color);
+          color: var(--global-text-color);
+          text-decoration: none;
 
           &:hover {
-            border-bottom-style: solid;
-            text-decoration: none;
+            color: var(--global-theme-color);
+            text-decoration: underline;
           }
         }
 
@@ -899,8 +900,14 @@ footer.sticky-bottom {
 }
 
 // Awards hover underline on about page (only for linked awards).
-.awards-list a:hover {
-  text-decoration: underline !important;
+.awards-list a {
+  color: var(--global-text-color);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--global-theme-color);
+    text-decoration: underline !important;
+  }
 }
 
 // // Ensure selected papers block spans full width on about page.

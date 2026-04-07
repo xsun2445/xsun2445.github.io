@@ -1,8 +1,24 @@
-# "gadre":
-#   - firstname: ["Akshay", "A."]
-#     url: https://www.akshaygadre.com/
+"gadre":
+  - firstname: ["Akshay", "A."]
+    url: https://www.akshaygadre.com/
 
-# "jingping":
-#   - firstname: ["Jingping", "Nie"]
-#     url: https://jingpingnie.com/
+"nie":
+  - firstname: ["Jingping", "J."]
+    url: https://jingpingnie.com/
+
+"kinget":
+  - firstname: ["Peter", "P."]
+    url: https://peterkinget.github.io/
+
+"zhao":
+  - firstname: ["Minghui", "M."]
+    url: https://scottz.net/
+
+"jiang":
+  - firstname: ["Fred", "Xiaofan", "X."]
+    url: https://fredjiang.com/
+
+"xia":
+  - firstname: ["Stephen", "S."]
+    url: http://www.stephenxia.com/
 
