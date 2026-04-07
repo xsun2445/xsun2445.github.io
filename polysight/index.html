@@ -215,16 +215,18 @@
           <p>
             Conventional mmWave SAR images materials by their reflectivity, but many everyday
             materials such as acrylic, PET, and copper exhibit nearly identical reflectivity at
-            normal incidence that makes them indistinguishable to a mono-static radar (incident angle = 0°). 
-            Additinoally, the phase change of reflected signal at low incident and reflecting angles are nearly zero, 
-            which further reduces the material contrast. This is because the reflectivity at normal incidence is 
-            dominated by the real part of the material's permittivity, which is similar across many materials. 
-            Furthermore, the reflected signal is often dominated by surface geometry (shape, distance), which is largely insensitive to material properties
+            normal incidence. To a mono-static radar (incident angle = 0°), they look the same.
+            At normal incidence the reflectivity is dominated by the real part of the material's
+            permittivity, which is similar across many materials, and the phase change of the
+            reflected signal is nearly zero. The reflected signal is also largely shaped by
+            surface geometry such as shape and distance, which is mostly insensitive to material
+            properties.
           </p>
           <p>
-            Our key insight is that the <strong>polarization response</strong> of a material changes dramatically
-            with the incidence angle, and the contrast between materials grows sharply near each
-            material's <strong>Brewster's angle</strong> (typically 55°–65°).
+            Our key insight is that the <strong>polarization response</strong> of a material
+            changes dramatically with the incidence angle. The contrast between materials grows
+            sharply near each material's <strong>Brewster's angle</strong>, which is typically
+            between 55° and 65°.
           </p>
         </div>
       </div>
@@ -250,13 +252,14 @@
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
           <p>
-            Exploiting this insight is hard in practice. Capturing reflections at 55°&ndash;65°
-            requires the transmitter and receiver antennas to be separated by roughly a meter,
-            but commodity mmWave radars are built for compact mono-static operation with TX
-            and RX placed only millimeters apart. POLySight therefore has to <strong>turn
-            multiple commodity radars into a single distributed bi-static radar</strong>
-            &mdash; one transmitter and two orthogonally polarized receivers placed
-            ~1.5&nbsp;m away on a 2D motion stage to synthesize a wide aperture.
+            Exploiting this insight is hard in practice. Capturing reflections at incidence
+            angles between 55° and 65° requires the transmitter and receiver antennas to be
+            separated by roughly a meter, but commodity mmWave radars are built for compact
+            mono-static operation with TX and RX placed only millimeters apart. POLySight
+            therefore has to <strong>turn multiple commodity radars into a single distributed
+            bi-static radar</strong>. We use one transmitter and two orthogonally polarized
+            receivers placed about 1.5&nbsp;m away on a 2D motion stage to synthesize a wide
+            aperture.
           </p>
         </div>
       </div>
@@ -278,19 +281,21 @@
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
           <p>
-            Wiring radars together physically is only half the problem &mdash; they also need
-            to be <strong>synchronized in time and phase</strong>. Commodity FMCW receivers
-            sample the IF signal in only a 0.257&nbsp;&micro;s window out of a
-            128.5&nbsp;&micro;s chirp, so two unsynchronized radars have less than a 0.2%
-            chance of even seeing each other. Even after a shared hardware trigger aligns
-            them into this window, each chirp still carries a random per-chirp frequency
-            (&Delta;<i>f</i>) and phase (&Delta;&phi;) offset from the local oscillator that
-            destroys the coherence SAR imaging requires. With no practical way to place a
-            known reference reflector in the scene, POLySight repurposes the
-            <strong>direct over-the-air path between the radars</strong> as a per-chirp
-            reference, isolating it via receive-side beamforming and using its peak to
-            compensate every chirp &mdash; achieving a residual synchronization error of just
-            <strong>138&nbsp;Hz</strong>.
+            Placing the radars correctly is only half the problem. They also need to be
+            <strong>synchronized in time and phase</strong>. Commodity FMCW receivers sample
+            the IF signal in only a 0.257&nbsp;&micro;s window out of a 128.5&nbsp;&micro;s
+            chirp, so two unsynchronized radars have less than a 0.2% chance of seeing each
+            other at all. Even after a shared hardware trigger aligns them into this window,
+            each chirp still carries a random per-chirp frequency (&Delta;<i>f</i>) and phase
+            (&Delta;&phi;) offset from the local oscillator that destroys the coherence SAR
+            imaging needs.
+          </p>
+          <p>
+            There is no practical way to place a known reference reflector in the scene, so
+            POLySight repurposes the <strong>direct over-the-air path between the
+            radars</strong> as a per-chirp reference. We isolate this direct path using
+            receive-side beamforming and use its peak to compensate every chirp. The residual
+            synchronization error after this process is only <strong>138&nbsp;Hz</strong>.
           </p>
         </div>
       </div>
@@ -324,12 +329,12 @@
         <div class="content has-text-justified">
           <p>
             We first inspect the SAR images that POLySight produces for a set of visually
-            similar materials &mdash; rubber, alumina, cardboard, acrylic, silicone rubber,
-            plastic, and copper tape. The horizontal (<i>H</i>) and vertical (<i>V</i>)
-            polarization images alone leave many materials looking nearly identical, mirroring
+            similar materials: rubber, alumina, cardboard, acrylic, silicone rubber, plastic,
+            and copper tape. The horizontal (<i>H</i>) and vertical (<i>V</i>) polarization
+            images alone leave many of these materials looking nearly identical, mirroring
             what a conventional mmWave SAR sees. The <strong>polarization-ratio
-            (<i>P</i>)</strong> channel, however, brings out clear contrast between materials
-            with similar reflectivity but different permittivity &mdash; exactly the
+            (<i>P</i>)</strong> channel, in contrast, brings out clear contrast between
+            materials that have similar reflectivity but different permittivity. This is the
             polarimetric signal POLySight relies on for classification.
           </p>
         </div>
@@ -352,13 +357,12 @@
         <div class="content has-text-justified">
           <p>
             To confirm that the contrast really comes from polarimetry at high incidence
-            angles, we image the same materials at three angles &mdash; the conventional
-            mono-static 0°, 55°, and 60°. At 0° only a few materials with extreme
-            permittivity (copper, rubber, glass fiber) stand out and the rest collapse onto
-            each other. At 55° the contrast already grows substantially, and at 60°
-            &mdash; near acrylic's Brewster angle &mdash; cardboard, PET, and acrylic
-            finally separate cleanly. This is the &ldquo;Goldilocks zone&rdquo; that motivates
-            POLySight's bi-static design.
+            angles, we image the same materials at three angles: the conventional mono-static
+            0°, 55°, and 60°. At 0° only a few materials with extreme permittivity (copper,
+            rubber, glass fiber) stand out and the rest collapse onto each other. At 55° the
+            contrast already grows substantially. At 60°, which is close to acrylic's
+            Brewster angle, cardboard, PET, and acrylic finally separate cleanly. This is the
+            "Goldilocks zone" that motivates POLySight's bi-static design.
           </p>
         </div>
       </div>
@@ -368,7 +372,7 @@
         <img src="./static/images/paper/fig_material_contrast.png" alt="Material contrast across angles" style="width:100%; border-radius:8px;">
         <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
           Material contrast across incident angles. Materials indistinguishable at 0° become
-          clearly separable at 55°&ndash;60°, near acrylic's Brewster angle.
+          clearly separable between 55° and 60°, close to acrylic's Brewster angle.
         </p>
       </div>
     </div>
@@ -380,13 +384,12 @@
           <p>
             We then evaluate POLySight's pixel-wise classification accuracy on 36 materials
             spanning <strong>23 solids, 8 liquids, and 4 powders</strong>, using a weighted
-            KNN over the calibrated H, V, and P channels. Compared to using only the
-            horizontal channel &mdash; analogous to a conventional mmWave SAR &mdash;
-            polarimetry boosts solid classification from <strong>48.46%</strong> to
-            <strong>95.74%</strong>, liquids from <strong>72.87%</strong> to
-            <strong>96.50%</strong>, and powders from <strong>58.69%</strong> to
-            <strong>100%</strong>. Capturing a second incidence angle further pushes the
-            solid accuracy to <strong>99.34%</strong>.
+            KNN over the calibrated H, V, and P channels. Using only the horizontal channel
+            is analogous to a conventional mmWave SAR. Adding polarimetry boosts solid
+            classification from <strong>48.46%</strong> to <strong>95.74%</strong>, liquids
+            from <strong>72.87%</strong> to <strong>96.50%</strong>, and powders from
+            <strong>58.69%</strong> to <strong>100%</strong>. Capturing a second incidence
+            angle further pushes the solid accuracy to <strong>99.34%</strong>.
           </p>
         </div>
       </div>
@@ -412,10 +415,10 @@
             material changes. We test this by progressively dissolving sugar into 650&nbsp;ml
             of water and measuring the polarization angle and real permittivity at each
             concentration. The polarization angle decreases and the real permittivity
-            increases monotonically with concentration, and a simple linear regression on the
-            two features predicts sugar concentration with a median error of just
-            <strong>1.548%</strong> by weight &mdash; suggesting applications such as
-            non-contact concentration sensing for medical and quality-control settings.
+            increases monotonically with concentration. A simple linear regression on these
+            two features predicts the sugar concentration with a median error of just
+            <strong>1.548%</strong> by weight, which opens up applications such as non-contact
+            concentration sensing for medical and quality-control settings.
           </p>
         </div>
       </div>
@@ -519,7 +522,20 @@
   <div class="container is-max-desktop content has-text-centered">
     <h2 class="title">BibTeX</h2>
     <p>If you find this work useful, please consider citing our paper!</p>
-    <pre style="text-align: left;"><code>@inproceedings{polysight,
+    <div style="position: relative; text-align: left;">
+      <button id="bibtex-copy-btn" type="button"
+              onclick="(function(btn){
+                var code = document.getElementById('bibtex-code').innerText;
+                navigator.clipboard.writeText(code).then(function(){
+                  var orig = btn.innerText;
+                  btn.innerText = 'Copied!';
+                  setTimeout(function(){ btn.innerText = orig; }, 1500);
+                });
+              })(this)"
+              style="position: absolute; top: 0.5rem; right: 0.5rem; padding: 0.3rem 0.7rem; font-size: 0.85rem; background: #fff; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; z-index: 1;">
+        <i class="fas fa-copy"></i> Copy
+      </button>
+      <pre style="text-align: left;"><code id="bibtex-code">@inproceedings{polysight,
   author    = {Sun, Xinghua and Gadre, Akshay},
   title     = {Towards Practical Bi-Static Polarimetric Imaging Using Commodity mmWave Radars for Material Sensing},
   booktitle = {Proceedings of the ACM/IEEE International Conference on Embedded Artificial Intelligence and Sensing Systems (SenSys '26)},
@@ -529,6 +545,7 @@
   address   = {New York, NY, USA},
   month     = {May},
 }</code></pre>
+    </div>
   </div>
 </section>
 
