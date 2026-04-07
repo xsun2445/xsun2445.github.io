@@ -9,13 +9,40 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "news-we-have-presented-our-work-at-t-mobile-s-headquarter-in-bonn-germany-and-won-the-t-mobile-challenge-most-engaging-presentation-award-2024",
+  },{id: "post-polysight-towards-practical-bi-static-polarimetric-imaging-for-material-sensing",
+      
+        title: "POLySight: Towards Practical Bi-Static Polarimetric Imaging for Material Sensing",
+      
+      description: "A highly accurate bi-static and polarimetric SAR imaging system at mmWave frequency",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2026/polysight-blog/";
+        
+      },
+    },{id: "post-muldar-unleashing-the-potential-of-distributed-cots-mmwave-radar-by-exploiting-cross-device-channels",
+      
+        title: "MulDar: Unleashing the Potential of Distributed COTS mmWave Radar by Exploiting Cross-Device Channels...",
+      
+      description: "A multi-static distributed mmWave radar imaging system with commodity-off-the-shelf radars.",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2026/muldar-blog/";
+        
+      },
+    },{id: "news-we-have-presented-our-work-at-t-mobile-s-headquarter-in-bonn-germany-and-won-the-t-mobile-challenge-most-engaging-presentation-award-2024",
           title: 'We have presented our work at T-Mobile’s headquarter in Bonn, Germany. And won...',
           description: "",
           section: "News",},{id: "news-we-will-be-presenting-a-demo-and-a-workshop-paper-at-mobicom-2024-in-washington-d-c",
           title: 'We will be presenting a Demo and a Workshop paper at Mobicom 2024...',
           description: "",
-          section: "News",},{
+          section: "News",},{id: "projects-muldar",
+          title: 'MulDar',
+          description: "with background image",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/MulDar-Tutorial/";
+            },},{
       id: 'light-theme',
       title: 'Change theme to light',
       description: 'Change the theme of the site to Light',
