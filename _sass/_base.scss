@@ -49,6 +49,28 @@ table.table a {
   }
 }
 
+// News & awards inline links: look like normal text, turn purple on hover (no underline)
+.news td a,
+.news td a strong,
+.news td a em,
+.awards-list a,
+.awards-list a strong,
+.awards-list a em {
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: color 0.15s ease-in-out;
+}
+
+.news td a:hover,
+.news td a:hover strong,
+.news td a:hover em,
+.awards-list a:hover,
+.awards-list a:hover strong,
+.awards-list a:hover em {
+  color: var(--global-theme-color) !important;
+  text-decoration: none !important;
+}
+
 .table-dark {
   background-color: transparent;
   &.table-bordered {
@@ -906,7 +928,7 @@ footer.sticky-bottom {
 
   &:hover {
     color: var(--global-theme-color);
-    text-decoration: underline !important;
+    text-decoration: none !important;
   }
 }
 
