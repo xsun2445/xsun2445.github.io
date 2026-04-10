@@ -246,7 +246,7 @@
 <!-- ─── Challenges ──────────────────────────────────────────────────── -->
 <section class="section" style="padding-top: 0;">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Challenges</h2>
+    <h2 class="title is-3 has-text-centered">Challenges & Methods</h2>
 
     <div class="columns is-centered" style="margin-top: 2rem;">
       <div class="column is-four-fifths">
@@ -254,22 +254,18 @@
           <p>
             Exploiting this insight is hard in practice. Capturing reflections at incidence
             angles between 55° and 65° requires the transmitter and receiver antennas to be
-            separated by roughly a meter, but commodity mmWave radars are built for compact
-            mono-static operation with TX and RX placed only millimeters apart. POLySight
+            separated by roughly a meter. POLySight
             therefore has to <strong>turn multiple commodity radars into a single distributed
-            bi-static radar</strong>. We use one transmitter and two orthogonally polarized
-            receivers placed about 1.5&nbsp;m away on a 2D motion stage to synthesize a wide
+            bi-static radar</strong>. We use one transmitter radar and two orthogonally placed
+            receiver radars separated about 1.5&nbsp;m away on a 2D motion stage to synthesize a wide
             aperture.
           </p>
         </div>
       </div>
     </div>
     <div class="has-text-centered" style="margin-top: 1rem;">
-      <div style="display:inline-block; width:80%;">
-        <!-- TODO: replace with placement / geometry figure when ready -->
-        <div style="width:100%; aspect-ratio: 16/6; background: #f0f0f0; border: 2px dashed #bbb; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #888; font-size: 0.95rem;">
-          [Figure placeholder: distributed bi-static radar placement and TX/RX geometry]
-        </div>
+      <div style="display:inline-block; width:60%;">
+        <img src="./static/images/paper/polysight_radar_orientation.png" alt="Distributed bi-static radar placement and TX/RX geometry" style="width:100%; border-radius:8px;">
         <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
           Distributed bi-static placement: a 45°-tilted TX and two orthogonally polarized RX
           radars separated by ~1.5&nbsp;m to reach high incidence angles.
@@ -281,31 +277,33 @@
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
           <p>
-            Placing the radars correctly is only half the problem. They also need to be
-            <strong>synchronized in time and phase</strong>. Commodity FMCW receivers sample
-            the IF signal in only a 0.257&nbsp;&micro;s window out of a 128.5&nbsp;&micro;s
-            chirp, so two unsynchronized radars have less than a 0.2% chance of seeing each
-            other at all. Even after a shared hardware trigger aligns them into this window,
-            each chirp still carries a random per-chirp frequency (&Delta;<i>f</i>) and phase
-            (&Delta;&phi;) offset from the local oscillator that destroys the coherence SAR
-            imaging needs.
+            Commodity radars are not designed for distributed operation, we use the SYNC_IN pin to 
+            trigger the radars simultaneously, but this only achieves coarse synchronization. 
+            The chanenl of each chirp is subject to independent random frequency, phase and amplitude 
+            offsets that destroy the coherence needed for SAR imaging.
           </p>
+        </div>
+      </div>
+    </div>
+    <div class="has-text-centered" style="margin-top: 1rem;">
+      <div style="display:inline-block; width:70%;">
+        <img src="./static/images/paper/polysight_chirps_sync.png" alt="Per-chirp synchronization offsets" style="width:100%; border-radius:8px;">
+      </div>
+    </div>
+    <div class="columns is-centered" style="margin-top: 1.5rem;">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
           <p>
-            There is no practical way to place a known reference reflector in the scene, so
             POLySight repurposes the <strong>direct over-the-air path between the
-            radars</strong> as a per-chirp reference. We isolate this direct path using
-            receive-side beamforming and use its peak to compensate every chirp. The residual
-            synchronization error after this process is only <strong>138&nbsp;Hz</strong>.
+            radars (interference)</strong> as a per-chirp reference. We isolate this direct path using
+            receive-side beamforming and use its peak to compensate every chirp.
           </p>
         </div>
       </div>
     </div>
     <div class="has-text-centered" style="margin-top: 1rem;">
       <div style="display:inline-block; width:80%;">
-        <!-- TODO: replace with sync figure (defocused vs synchronized SAR) when ready -->
-        <div style="width:100%; aspect-ratio: 16/6; background: #f0f0f0; border: 2px dashed #bbb; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #888; font-size: 0.95rem;">
-          [Figure placeholder: defocused vs. phase-synchronized SAR using direct-path reference]
-        </div>
+        <img src="./static/images/paper/polysight_blog_sync.png" alt="Defocused vs. phase-synchronized SAR" style="width:100%; border-radius:8px;">
         <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
           Without per-chirp phase synchronization the SAR image is completely defocused;
           referencing the direct path between radars recovers a sharp, high-resolution image.
@@ -328,21 +326,15 @@
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
           <p>
-            We first inspect the SAR images that POLySight produces for a set of visually
-            similar materials: rubber, alumina, cardboard, acrylic, silicone rubber, plastic,
-            and copper tape. The horizontal (<i>H</i>) and vertical (<i>V</i>) polarization
-            images alone leave many of these materials looking nearly identical, mirroring
-            what a conventional mmWave SAR sees. The <strong>polarization-ratio
-            (<i>P</i>)</strong> channel, in contrast, brings out clear contrast between
-            materials that have similar reflectivity but different permittivity. This is the
-            polarimetric signal POLySight relies on for classification.
+            We evaluated POLySight on 36 materials spanning 23 solids, 8 liquids, and 4 powders. 
+            We imaged each material at a high incidence angle of 50° to capture their polarimetric signatures.
           </p>
         </div>
       </div>
     </div>
     <div class="has-text-centered" style="margin-top: 1rem;">
       <div style="display:inline-block; width:80%;">
-        <img src="./static/images/paper/fig_sar_images.png" alt="SAR images" style="width:100%; border-radius:8px;">
+        <img src="./static/images/paper/polysight_quali.png" alt="SAR images" style="width:100%; border-radius:8px;">
         <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
           SAR images at &theta;<sub>i</sub>&nbsp;=&nbsp;50°: horizontal (H), vertical (V), and
           polarization-ratio (P) channels across 7 materials. The P channel reveals material
@@ -368,12 +360,8 @@
       </div>
     </div>
     <div class="has-text-centered" style="margin-top: 1rem;">
-      <div style="display:inline-block; width:80%;">
-        <img src="./static/images/paper/fig_material_contrast.png" alt="Material contrast across angles" style="width:100%; border-radius:8px;">
-        <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
-          Material contrast across incident angles. Materials indistinguishable at 0° become
-          clearly separable between 55° and 60°, close to acrylic's Brewster angle.
-        </p>
+      <div style="display:inline-block; width:70%;">
+        <img src="./static/images/paper/polysight_multiangle.png" alt="Material contrast across angles" style="width:100%; border-radius:8px;">
       </div>
     </div>
 
@@ -395,7 +383,7 @@
       </div>
     </div>
     <div class="has-text-centered" style="margin-top: 1rem;">
-      <div style="display:inline-block; width:80%;">
+      <div style="display:inline-block; width:90%;">
         <img src="./static/images/paper/fig_results3.png" alt="Confusion matrices" style="width:100%; border-radius:8px;">
         <p class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light) !important;">
           Confusion matrices for pixel-wise material classification. POLySight achieves
@@ -406,7 +394,7 @@
       </div>
     </div>
 
-    <!-- Sugar concentration case study -->
+    <!-- Sugar concentration case study
     <div class="columns is-centered" style="margin-top: 2.5rem;">
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
@@ -432,7 +420,7 @@
           SAR.
         </p>
       </div>
-    </div>
+    </div> -->
 
     <!-- ─── Permittivity Table ─────────────────────────────────────────────── -->
     <div class="has-text-centered" style="margin-top: 3rem;">
