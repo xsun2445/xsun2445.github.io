@@ -1,73 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="MulDar: Unleashing the Potential of Distributed COTS mmWave Radar by Exploiting Cross-Device Channels — ACM MobiSys 2026">
-  <meta name="keywords" content="MulDar, mmWave, radar, multi-static, distributed, specular reflection, imaging">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MulDar</title>
-  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%22 y=%2255%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2280%22>🌐</text></svg>">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="MulDar: Unleashing the Potential of Distributed COTS mmWave Radar by Exploiting Cross-Device Channels — ACM MobiSys 2026"
+    />
+    <meta name="keywords" content="MulDar, mmWave, radar, multi-static, distributed, specular reflection, imaging" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MulDar</title>
+    <link
+      rel="shortcut icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%22 y=%2255%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2280%22>🌐</text></svg>"
+    />
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-</head>
-<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+  </head>
+  <body>
+    <!-- ─── Hero ─────────────────────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title gradient-title">MulDar</h1>
+              <h1 class="title is-2 publication-title">
+                Unleashing the Potential of Distributed COTS mmWave Radar by Exploiting Cross-Device Channels
+              </h1>
+              <h2
+                class="title is-4 publication-venue"
+                style="text-align: center; width: 100%; line-height: 1.2; margin-top: 0.5rem; margin-bottom: 0.5rem"
+              >
+                MobiSys 2026
+              </h2>
 
-<!-- ─── Hero ─────────────────────────────────────────────────────────────── -->
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title gradient-title">
-            MulDar
-          </h1>
-          <h1 class="title is-2 publication-title">
-            Unleashing the Potential of Distributed COTS mmWave Radar by Exploiting Cross-Device Channels
-          </h1>
-          <h2 class="title is-4 publication-venue" style="text-align: center; width: 100%; line-height: 1.2; margin-top: 0.5rem; margin-bottom: 0.5rem;">
-            MobiSys 2026
-          </h2>
+              <div class="is-size-5 publication-authors" style="line-height: 3">
+                <span class="author-block"> <a href="../">Xinghua Sun</a>,&nbsp;</span>
+                <span class="author-block"> <a href="#">Qiancheng Li</a>,&nbsp;</span>
+                <span class="author-block"> <a href="https://www.akshaygadre.com/">Akshay Gadre</a></span>
+              </div>
 
-          <div class="is-size-5 publication-authors" style="line-height: 3">
-            <span class="author-block">
-              <a href="../">Xinghua Sun</a>,&nbsp;</span>
-            <span class="author-block">
-              <a href="#">Qiancheng Li</a>,&nbsp;</span>
-            <span class="author-block">
-              <a href="https://www.akshaygadre.com/">Akshay Gadre</a></span>
-          </div>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <img
+                    src="./static/images/University_of_Washington_seal.svg.png"
+                    style="height: 1.5em; vertical-align: text-bottom; margin-right: 0.5em"
+                  />
+                  University of Washington
+                </span>
+              </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <img src="./static/images/University_of_Washington_seal.svg.png" style="height: 1.5em; vertical-align: text-bottom; margin-right: 0.5em;">
-              University of Washington
-            </span>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <span class="link-block">
-                <a href="./static/pdf/Mobisys_2026_MulDar.pdf"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="fas fa-file-pdf"></i>
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="./static/pdf/Mobisys_2026_MulDar.pdf" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
                   </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <!-- <span class="link-block">
+                  <!-- <span class="link-block">
                 <a href="#"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -76,57 +84,58 @@
                   <span>arXiv</span>
                 </a>
               </span> -->
-              <span class="link-block">
-                <a href="https://youtu.be/Dgcf0vv0X7E"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="fab fa-youtube"></i>
+                  <span class="link-block">
+                    <a href="https://youtu.be/Dgcf0vv0X7E" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-youtube"></i>
+                      </span>
+                      <span>Video</span>
+                    </a>
                   </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://github.com/xsun2445/MulDar"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="fab fa-github"></i>
+                  <span class="link-block">
+                    <a href="https://github.com/xsun2445/MulDar" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
                   </span>
-                  <span>Code</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://huggingface.co/datasets/xinghs/MulDar_Dataset"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">🤗</span>
-                  <span>Dataset</span>
-                </a>
-              </span>
+                  <span class="link-block">
+                    <a href="https://huggingface.co/datasets/xinghs/MulDar_Dataset" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">🤗</span>
+                      <span>Dataset</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ─── Teaser ────────────────────────────────────────────────────────────── -->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <div class="publication-video">
-        <iframe src="https://www.youtube.com/embed/Dgcf0vv0X7E?rel=0&amp;showinfo=0"
-                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <!-- ─── Teaser ────────────────────────────────────────────────────────────── -->
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <div class="publication-video">
+            <iframe
+              src="https://www.youtube.com/embed/Dgcf0vv0X7E?rel=0&amp;showinfo=0"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <h2 class="subtitle has-text-centered" style="margin-top: 1rem">
+            MulDar develops a synchronous multi-static radar system that addresses specular reflection and ghost artifacts, making previously
+            invisible objects detectable in mmWave imaging.
+          </h2>
+        </div>
       </div>
-      <h2 class="subtitle has-text-centered" style="margin-top: 1rem;">
-        MulDar develops a synchronous multi-static radar system that addresses specular reflection
-        and ghost artifacts, making previously invisible objects detectable in mmWave imaging.
-      </h2>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ─── Deform Video Comparison ───────────────────────────────────────────── -->
-<!-- <section class="section" style="padding-bottom: 0;">
+    <!-- ─── Deform Video Comparison ───────────────────────────────────────────── -->
+    <!-- <section class="section" style="padding-bottom: 0;">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
@@ -155,8 +164,8 @@
   </div>
 </section> -->
 
-<!-- ─── Table Video Comparison ───────────────────────────────────────────── -->
-<!-- <section class="section" style="padding-bottom: 0;">
+    <!-- ─── Table Video Comparison ───────────────────────────────────────────── -->
+    <!-- <section class="section" style="padding-bottom: 0;">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
@@ -173,8 +182,8 @@
   </div>
 </section> -->
 
-<!-- ─── Car Video Comparison ──────────────────────────────────────────────── -->
-<!-- <section class="section" style="padding-bottom: 0;">
+    <!-- ─── Car Video Comparison ──────────────────────────────────────────────── -->
+    <!-- <section class="section" style="padding-bottom: 0;">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
@@ -203,261 +212,244 @@
   </div>
 </section> -->
 
-<!-- ─── Abstract ─────────────────────────────────────────────────────────── -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            mmWave radar based sensors are increasingly being deployed for robotics and automobile
-            applications to sense the environment. Unfortunately, specular reflections of smooth and
-            planar surfaces makes mmWave sensing unreliable at detecting objects and vehicles in the
-            real world. In fact, due to the small wavelength of mmWave radars, most surfaces are smooth
-            reflectors for the radar signals. This paper addresses this fundamental limitation of
-            detecting specular reflectors by capturing the energy reflected away from the radar.
-          </p>
-          <p>
-            This paper presents MulDar, a multi-static distributed mmWave radar imaging solution
-            that leverages cross-radar channels to detect specular reflectors and remove ghost
-            multi-bounce artifacts. At the core of MulDar's design lies the engineering of a distributed
-            phase-synchronization approach using the direct path between the radars to perform imaging.
-            The multi-static radar is then leveraged to combine the mono-static and bi-static measurements
-            across pairs of radars to create a richer scene free of unseen and ghost objects. Our evaluation
-            across materials and real world scenarios demonstrates a <strong>66.79% reduction in Chamfer
-            distance</strong> between the ground truth point clouds and the mmWave point clouds generated.
-          </p>
+    <!-- ─── Abstract ─────────────────────────────────────────────────────────── -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                mmWave radar based sensors are increasingly being deployed for robotics and automobile applications to sense the environment.
+                Unfortunately, specular reflections of smooth and planar surfaces makes mmWave sensing unreliable at detecting objects and vehicles in
+                the real world. In fact, due to the small wavelength of mmWave radars, most surfaces are smooth reflectors for the radar signals. This
+                paper addresses this fundamental limitation of detecting specular reflectors by capturing the energy reflected away from the radar.
+              </p>
+              <p>
+                This paper presents MulDar, a multi-static distributed mmWave radar imaging solution that leverages cross-radar channels to detect
+                specular reflectors and remove ghost multi-bounce artifacts. At the core of MulDar's design lies the engineering of a distributed
+                phase-synchronization approach using the direct path between the radars to perform imaging. The multi-static radar is then leveraged
+                to combine the mono-static and bi-static measurements across pairs of radars to create a richer scene free of unseen and ghost
+                objects. Our evaluation across materials and real world scenarios demonstrates a
+                <strong>66.79% reduction in Chamfer distance</strong> between the ground truth point clouds and the mmWave point clouds generated.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ─── Under Construction ───────────────────────────────────────────────── -->
-<section class="section">
-  <div class="container is-max-desktop has-text-centered">
-    <h2 class="title is-3" style="color: var(--text-light);">🚧 Under Construction 🚧</h2>
-    <p class="is-size-5" style="color: var(--text-light);">More details coming soon. Stay tuned!</p>
-  </div>
-</section>
+    <!-- ─── Under Construction ───────────────────────────────────────────────── -->
+    <section class="section">
+      <div class="container is-max-desktop has-text-centered">
+        <h2 class="title is-3" style="color: var(--text-light)">🚧 Under Construction 🚧</h2>
+        <p class="is-size-5" style="color: var(--text-light)">More details coming soon. Stay tuned!</p>
+      </div>
+    </section>
 
-
-
-<!-- this div is for comment the content during construction -->
-<div style="display: none;">
-<!-- ─── Key Contributions ────────────────────────────────────────────────── -->
-<section class="section" style="padding-top: 0;">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Key Contributions</h2>
-        <div class="content has-text-justified">
-          <ol>
-            <li><strong>Distributed mmWave synchronization.</strong> MulDar engineers a direct
-            over-the-air path between commodity TI AWR mmWave radars for coarse hardware-trigger
-            synchronization and per-chirp phase/frequency/amplitude offset correction, enabling
-            cross-device channel capture on COTS hardware with no hardware modifications.</li>
-            <li><strong>Multi-static bi-static imaging.</strong> A backprojection-based bi-static
-            SAR imaging algorithm reconstructs the 2D scene from cross-radar channel measurements.
-            Correlated channel pairs are coherently fused for SNR and resolution gain; uncorrelated
-            pairs are non-coherently fused to add new viewpoints.</li>
-            <li><strong>Specular reflection recovery &amp; ghost removal.</strong> By combining
-            mono-static and bi-static measurements, MulDar detects objects invisible to any single
-            radar and removes ghost multi-bounce artifacts — achieving a <strong>66.79%</strong>
-            reduction in Chamfer distance vs. mono-static baselines across planar surfaces,
-            deformed reflectors, and real-world scenes.</li>
-          </ol>
+    <!-- this div is for comment the content during construction -->
+    <div style="display: none">
+      <!-- ─── Key Contributions ────────────────────────────────────────────────── -->
+      <section class="section" style="padding-top: 0">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <h2 class="title is-3">Key Contributions</h2>
+              <div class="content has-text-justified">
+                <ol>
+                  <li>
+                    <strong>Distributed mmWave synchronization.</strong> MulDar engineers a direct over-the-air path between commodity TI AWR mmWave
+                    radars for coarse hardware-trigger synchronization and per-chirp phase/frequency/amplitude offset correction, enabling
+                    cross-device channel capture on COTS hardware with no hardware modifications.
+                  </li>
+                  <li>
+                    <strong>Multi-static bi-static imaging.</strong> A backprojection-based bi-static SAR imaging algorithm reconstructs the 2D scene
+                    from cross-radar channel measurements. Correlated channel pairs are coherently fused for SNR and resolution gain; uncorrelated
+                    pairs are non-coherently fused to add new viewpoints.
+                  </li>
+                  <li>
+                    <strong>Specular reflection recovery &amp; ghost removal.</strong> By combining mono-static and bi-static measurements, MulDar
+                    detects objects invisible to any single radar and removes ghost multi-bounce artifacts — achieving a
+                    <strong>66.79%</strong> reduction in Chamfer distance vs. mono-static baselines across planar surfaces, deformed reflectors, and
+                    real-world scenes.
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<!-- ─── Motivation ───────────────────────────────────────────────────────── -->
-<section class="section" style="padding-top: 0;">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Motivation</h2>
-    <div class="columns is-centered">
-      <div class="column is-half">
-        <figure class="image">
-          <img src="./static/images/paper/fig2_motivation.png" alt="Mono-static blind spots" style="border-radius:8px;">
-        </figure>
-        <p class="subtitle has-text-centered" style="margin-top: 1rem;">
-          Mono-static radars suffer from specular blind spots: smooth planar surfaces reflect energy
-          away from the radar, making them completely invisible.
-        </p>
-      </div>
-      <div class="column is-half">
-        <figure class="image">
-          <img src="./static/images/paper/fig4_bistatic.png" alt="Bi-static channels reveal hidden objects" style="border-radius:8px;">
-        </figure>
-        <p class="subtitle has-text-centered" style="margin-top: 1rem;">
-          Bi-static cross-radar channels reveal the planar reflector invisible to mono-static
-          radars and disambiguate ghost multi-bounce artifacts.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── System Overview ──────────────────────────────────────────────────── -->
-<section class="section" style="padding-top: 0;">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">System Overview</h2>
-    <div class="columns is-centered">
-      <div class="column">
-        <figure class="image">
-          <img src="./static/images/paper/fig5_overview.png" alt="MulDar system overview" style="border-radius:8px;">
-        </figure>
-        <p class="subtitle has-text-centered" style="margin-top: 1rem;">
-          MulDar system pipeline: distributed radars transmit in a round-robin schedule, the direct path
-          between radars is used for phase synchronization, and a backprojection algorithm fuses
-          mono-static and bi-static measurements for full scene reconstruction.
-        </p>
-      </div>
-    </div>
-
-    <div class="columns is-centered" style="margin-top: 2rem;">
-      <div class="column is-half">
-        <figure class="image">
-          <img src="./static/images/paper/fig6_sync.png" alt="Synchronization" style="border-radius:8px;">
-        </figure>
-        <p class="subtitle has-text-centered" style="margin-top: 1rem;">
-          Hardware-triggered chirps received from another radar containing random frequency and phase
-          offsets, corrected using the direct-path peak as a reference.
-        </p>
-      </div>
-      <div class="column is-half">
-        <figure class="image">
-          <img src="./static/images/paper/fig8_channel_fusion.png" alt="Channel fusion" style="border-radius:8px;">
-        </figure>
-        <p class="subtitle has-text-centered" style="margin-top: 1rem;">
-          Channel fusion strategy: correlated channels are coherently combined for resolution gain;
-          uncorrelated channels are non-coherently fused to add new viewpoint information.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Results ──────────────────────────────────────────────────────────── -->
-<section class="section" style="padding-top: 0;">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Results</h2>
-
-    <!-- Qualitative -->
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <div class="content has-text-justified">
-          <p>
-            We evaluate MulDar against two baselines: <strong>Mono</strong>, which fuses only
-            mono-static reflections from each radar, and <strong>Multi</strong>, which fuses
-            only the cross-radar bi-static channels. Across planar surfaces of different
-            materials, deformed metal reflectors, and cluttered real-world scenes, MulDar
-            consistently recovers geometry that both baselines miss. Mono-static radars see
-            specular surfaces only as point reflections (or not at all), while bi-static-only
-            fusion misses objects whose dominant return is mono-static. MulDar's joint fusion
-            captures both, producing complete and ghost-free reconstructions.
-          </p>
+      <!-- ─── Motivation ───────────────────────────────────────────────────────── -->
+      <section class="section" style="padding-top: 0">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">Motivation</h2>
+          <div class="columns is-centered">
+            <div class="column is-half">
+              <figure class="image">
+                <img src="./static/images/paper/fig2_motivation.png" alt="Mono-static blind spots" style="border-radius: 8px" />
+              </figure>
+              <p class="subtitle has-text-centered" style="margin-top: 1rem">
+                Mono-static radars suffer from specular blind spots: smooth planar surfaces reflect energy away from the radar, making them completely
+                invisible.
+              </p>
+            </div>
+            <div class="column is-half">
+              <figure class="image">
+                <img src="./static/images/paper/fig4_bistatic.png" alt="Bi-static channels reveal hidden objects" style="border-radius: 8px" />
+              </figure>
+              <p class="subtitle has-text-centered" style="margin-top: 1rem">
+                Bi-static cross-radar channels reveal the planar reflector invisible to mono-static radars and disambiguate ghost multi-bounce
+                artifacts.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="has-text-centered" style="margin-top: 1rem;">
-      <div style="display:inline-block; width:80%;">
-        <img src="./static/images/paper/fig9_qualitative.png" alt="Qualitative results" style="width:100%; border-radius:8px;">
-        <p class="subtitle has-text-centered" style="margin-top: 1rem;">
-          Qualitative comparison across planar surfaces, deformed reflectors, and real-world
-          scenes. MulDar (right) reconstructs objects that are invisible or ghost-distorted in
-          the mono-static (left) and multi-static-only (center) baselines.
-        </p>
-      </div>
-    </div>
+      </section>
 
-    <!-- Quantitative -->
-    <div class="columns is-centered" style="margin-top: 2.5rem;">
-      <div class="column is-four-fifths">
-        <div class="content has-text-justified">
-          <p>
-            Quantitatively, we measure the two-way Chamfer distance between the reconstructed
-            point cloud and the ground truth across planar surfaces of five materials &mdash;
-            metal, plastic, wood, fabric, and drywall &mdash; rotated through a wide range of
-            incidence angles. MulDar reduces the average Chamfer distance by
-            <strong>72.62%</strong> on metal, <strong>81.03%</strong> on plastic,
-            <strong>69.47%</strong> on wood, <strong>68.47%</strong> on fabric, and
-            <strong>42.38%</strong> on drywall, for an overall <strong>66.79%</strong>
-            improvement over the mono-static baseline.
-          </p>
+      <!-- ─── System Overview ──────────────────────────────────────────────────── -->
+      <section class="section" style="padding-top: 0">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">System Overview</h2>
+          <div class="columns is-centered">
+            <div class="column">
+              <figure class="image">
+                <img src="./static/images/paper/fig5_overview.png" alt="MulDar system overview" style="border-radius: 8px" />
+              </figure>
+              <p class="subtitle has-text-centered" style="margin-top: 1rem">
+                MulDar system pipeline: distributed radars transmit in a round-robin schedule, the direct path between radars is used for phase
+                synchronization, and a backprojection algorithm fuses mono-static and bi-static measurements for full scene reconstruction.
+              </p>
+            </div>
+          </div>
+
+          <div class="columns is-centered" style="margin-top: 2rem">
+            <div class="column is-half">
+              <figure class="image">
+                <img src="./static/images/paper/fig6_sync.png" alt="Synchronization" style="border-radius: 8px" />
+              </figure>
+              <p class="subtitle has-text-centered" style="margin-top: 1rem">
+                Hardware-triggered chirps received from another radar containing random frequency and phase offsets, corrected using the direct-path
+                peak as a reference.
+              </p>
+            </div>
+            <div class="column is-half">
+              <figure class="image">
+                <img src="./static/images/paper/fig8_channel_fusion.png" alt="Channel fusion" style="border-radius: 8px" />
+              </figure>
+              <p class="subtitle has-text-centered" style="margin-top: 1rem">
+                Channel fusion strategy: correlated channels are coherently combined for resolution gain; uncorrelated channels are non-coherently
+                fused to add new viewpoint information.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="has-text-centered" style="margin-top: 1rem;">
-      <div style="display:inline-block; width:80%;">
-        <img src="./static/images/paper/fig13_chamfer.png" alt="Chamfer distance" style="width:100%; border-radius:8px;">
-        <p class="subtitle has-text-centered" style="margin-top: 1rem;">
-          Average Chamfer distance across planar surfaces of five materials. MulDar achieves a
-          66.79% reduction over the mono-static baseline.
-        </p>
-      </div>
-    </div>
+      </section>
 
-    <!-- In-the-wild: indoor -->
-    <div class="columns is-centered" style="margin-top: 2.5rem;">
-      <div class="column is-four-fifths">
-        <div class="content has-text-justified">
-          <p>
-            We further deploy MulDar in real-world environments to demonstrate the benefit of
-            cross-device channels for indoor sensing and SLAM. Across three indoor scenes
-            &mdash; a corridor corner, an open area with multiple doors, and a circular pillar
-            &mdash; the mono-static image misses entire walls and the bi-static-only image
-            sees only fragments. MulDar's joint reconstruction recovers the full corridor
-            geometry, including the curved arch and the pillar.
-          </p>
+      <!-- ─── Results ──────────────────────────────────────────────────────────── -->
+      <section class="section" style="padding-top: 0">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">Results</h2>
+
+          <!-- Qualitative -->
+          <div class="columns is-centered">
+            <div class="column is-four-fifths">
+              <div class="content has-text-justified">
+                <p>
+                  We evaluate MulDar against two baselines: <strong>Mono</strong>, which fuses only mono-static reflections from each radar, and
+                  <strong>Multi</strong>, which fuses only the cross-radar bi-static channels. Across planar surfaces of different materials, deformed
+                  metal reflectors, and cluttered real-world scenes, MulDar consistently recovers geometry that both baselines miss. Mono-static
+                  radars see specular surfaces only as point reflections (or not at all), while bi-static-only fusion misses objects whose dominant
+                  return is mono-static. MulDar's joint fusion captures both, producing complete and ghost-free reconstructions.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="has-text-centered" style="margin-top: 1rem">
+            <div style="display: inline-block; width: 80%">
+              <img src="./static/images/paper/fig9_qualitative.png" alt="Qualitative results" style="width: 100%; border-radius: 8px" />
+              <p class="subtitle has-text-centered" style="margin-top: 1rem">
+                Qualitative comparison across planar surfaces, deformed reflectors, and real-world scenes. MulDar (right) reconstructs objects that
+                are invisible or ghost-distorted in the mono-static (left) and multi-static-only (center) baselines.
+              </p>
+            </div>
+          </div>
+
+          <!-- Quantitative -->
+          <div class="columns is-centered" style="margin-top: 2.5rem">
+            <div class="column is-four-fifths">
+              <div class="content has-text-justified">
+                <p>
+                  Quantitatively, we measure the two-way Chamfer distance between the reconstructed point cloud and the ground truth across planar
+                  surfaces of five materials &mdash; metal, plastic, wood, fabric, and drywall &mdash; rotated through a wide range of incidence
+                  angles. MulDar reduces the average Chamfer distance by
+                  <strong>72.62%</strong> on metal, <strong>81.03%</strong> on plastic, <strong>69.47%</strong> on wood, <strong>68.47%</strong> on
+                  fabric, and <strong>42.38%</strong> on drywall, for an overall <strong>66.79%</strong>
+                  improvement over the mono-static baseline.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="has-text-centered" style="margin-top: 1rem">
+            <div style="display: inline-block; width: 80%">
+              <img src="./static/images/paper/fig13_chamfer.png" alt="Chamfer distance" style="width: 100%; border-radius: 8px" />
+              <p class="subtitle has-text-centered" style="margin-top: 1rem">
+                Average Chamfer distance across planar surfaces of five materials. MulDar achieves a 66.79% reduction over the mono-static baseline.
+              </p>
+            </div>
+          </div>
+
+          <!-- In-the-wild: indoor -->
+          <div class="columns is-centered" style="margin-top: 2.5rem">
+            <div class="column is-four-fifths">
+              <div class="content has-text-justified">
+                <p>
+                  We further deploy MulDar in real-world environments to demonstrate the benefit of cross-device channels for indoor sensing and SLAM.
+                  Across three indoor scenes &mdash; a corridor corner, an open area with multiple doors, and a circular pillar &mdash; the
+                  mono-static image misses entire walls and the bi-static-only image sees only fragments. MulDar's joint reconstruction recovers the
+                  full corridor geometry, including the curved arch and the pillar.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="has-text-centered" style="margin-top: 1rem">
+            <div style="display: inline-block; width: 80%">
+              <img src="./static/images/paper/fig11_indoor.png" alt="Real-world indoor evaluation" style="width: 100%; border-radius: 8px" />
+              <p class="subtitle has-text-centered" style="margin-top: 1rem">
+                Indoor evaluation: MulDar images corridor corners, open areas, and pillars that mono-static radars miss entirely.
+              </p>
+            </div>
+          </div>
+
+          <!-- In-the-wild: car -->
+          <div class="columns is-centered" style="margin-top: 2.5rem">
+            <div class="column is-four-fifths">
+              <div class="content has-text-justified">
+                <p>
+                  Finally, we evaluate MulDar in an automotive scenario, simulating a car pulling out of a lateral parking spot adjacent to another
+                  vehicle. Mono-static radars return only sparse point reflections from the neighboring car's smooth body panels, leaving most of its
+                  outline invisible. By combining mono- and bi-static channels across four distributed radars, MulDar continuously traces the full
+                  outline of the adjacent car &mdash; the kind of perception needed for safe collision avoidance in mmWave-only sensing stacks.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="has-text-centered" style="margin-top: 1rem">
+            <div style="display: inline-block; width: 80%">
+              <img src="./static/images/paper/fig12_car.png" alt="Automobile evaluation" style="width: 100%; border-radius: 8px" />
+              <p class="subtitle has-text-centered" style="margin-top: 1rem">
+                Automotive evaluation: MulDar detects the specular surfaces of a neighboring car that are invisible to conventional mono-static mmWave
+                radars.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="has-text-centered" style="margin-top: 1rem;">
-      <div style="display:inline-block; width:80%;">
-        <img src="./static/images/paper/fig11_indoor.png" alt="Real-world indoor evaluation" style="width:100%; border-radius:8px;">
-        <p class="subtitle has-text-centered" style="margin-top: 1rem;">
-          Indoor evaluation: MulDar images corridor corners, open areas, and pillars that
-          mono-static radars miss entirely.
-        </p>
-      </div>
-    </div>
+      </section>
 
-    <!-- In-the-wild: car -->
-    <div class="columns is-centered" style="margin-top: 2.5rem;">
-      <div class="column is-four-fifths">
-        <div class="content has-text-justified">
-          <p>
-            Finally, we evaluate MulDar in an automotive scenario, simulating a car pulling
-            out of a lateral parking spot adjacent to another vehicle. Mono-static radars
-            return only sparse point reflections from the neighboring car's smooth body
-            panels, leaving most of its outline invisible. By combining mono- and bi-static
-            channels across four distributed radars, MulDar continuously traces the full
-            outline of the adjacent car &mdash; the kind of perception needed for safe
-            collision avoidance in mmWave-only sensing stacks.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="has-text-centered" style="margin-top: 1rem;">
-      <div style="display:inline-block; width:80%;">
-        <img src="./static/images/paper/fig12_car.png" alt="Automobile evaluation" style="width:100%; border-radius:8px;">
-        <p class="subtitle has-text-centered" style="margin-top: 1rem;">
-          Automotive evaluation: MulDar detects the specular surfaces of a neighboring car
-          that are invisible to conventional mono-static mmWave radars.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+      <!-- ─── Video (moved to teaser) ──────────────────────────────────────────── -->
 
-<!-- ─── Video (moved to teaser) ──────────────────────────────────────────── -->
-
-<!-- ─── BibTeX ────────────────────────────────────────────────────────────── -->
-<!--
+      <!-- ─── BibTeX ────────────────────────────────────────────────────────────── -->
+      <!--
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
@@ -471,78 +463,72 @@
   </div>
 </section>
 -->
+    </div>
 
-</div>
-
-<!-- ─── Related Projects ─────────────────────────────────────────────────── -->
-<section class="section" style="padding-top: 0;">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Related Projects</h2>
-    <div class="related-project-card" onclick="window.location.href='../polysight/'">
-      <div class="columns is-vcentered">
-        <div class="column">
-          <p class="is-size-5" style="font-weight: 500; margin-bottom: 0.3rem;">
-            POLySight: Towards Practical Bi-Static Polarimetric Imaging using Commodity mmWave Radars for Material Sensing
-          </p>
-          <p class="is-size-6" style="margin-bottom: 0.2rem;">
-            <a href="../">Xinghua Sun</a>, and <a href="https://www.akshaygadre.com/">Akshay Gadre</a>
-          </p>
-          <p class="is-size-6" style="font-style: italic; margin-bottom: 0.6rem;">
-            To appear in SenSys, 2026
-          </p>
-          <a href="../polysight/"
-             class="button is-small is-outlined is-dark">Website</a>
-          <a href="https://github.com/xsun2445/polysight"
-             class="button is-small is-outlined is-dark">GitHub</a>
-          <a href="../polysight/static/pdf/Sensys_2026_PolySight.pdf"
-             class="button is-small is-outlined is-dark">PDF</a>
-        </div>
-        <div class="column is-narrow">
-          <a href="../polysight/">
-            <img src="./static/images/polysight_preview.png"
-                 alt="POLySight preview" style="width: 220px; border-radius: 6px;">
-          </a>
+    <!-- ─── Related Projects ─────────────────────────────────────────────────── -->
+    <section class="section" style="padding-top: 0">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Related Projects</h2>
+        <div class="related-project-card" onclick="window.location.href='../polysight/'">
+          <div class="columns is-vcentered">
+            <div class="column">
+              <p class="is-size-5" style="font-weight: 500; margin-bottom: 0.3rem">
+                POLySight: Towards Practical Bi-Static Polarimetric Imaging using Commodity mmWave Radars for Material Sensing
+              </p>
+              <p class="is-size-6" style="margin-bottom: 0.2rem">
+                <a href="../">Xinghua Sun</a>, and <a href="https://www.akshaygadre.com/">Akshay Gadre</a>
+              </p>
+              <p class="is-size-6" style="font-style: italic; margin-bottom: 0.6rem">To appear in SenSys, 2026</p>
+              <a href="../polysight/" class="button is-small is-outlined is-dark">Website</a>
+              <a href="https://github.com/xsun2445/polysight" class="button is-small is-outlined is-dark">GitHub</a>
+              <a href="../polysight/static/pdf/Sensys_2026_PolySight.pdf" class="button is-small is-outlined is-dark">PDF</a>
+            </div>
+            <div class="column is-narrow">
+              <a href="../polysight/">
+                <img src="./static/images/polysight_preview.png" alt="POLySight preview" style="width: 220px; border-radius: 6px" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ─── Footer ───────────────────────────────────────────────────────────── -->
-<footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content has-text-centered">
-          <p>
-            <a href="../" class="home-link">‹ Xinghua Sun's Homepage</a>
-            &nbsp;·&nbsp;
-            Website template from <a href="https://nerfies.github.io/">Nerfies</a>.
-          </p>
+    <!-- ─── Footer ───────────────────────────────────────────────────────────── -->
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content has-text-centered">
+              <p>
+                <a href="../" class="home-link">‹ Xinghua Sun's Homepage</a>
+                &nbsp;·&nbsp; Website template from <a href="https://nerfies.github.io/">Nerfies</a>.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</footer>
+    </footer>
 
-<script>
-  // Reload videos when they re-enter the viewport to prevent disappearing after long idle
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const video = entry.target;
-      if (entry.isIntersecting) {
-        if (video.readyState === 0 || video.error) {
-          video.load();
-        }
-        video.play().catch(() => {});
-      } else {
-        video.pause();
-      }
-    });
-  }, { threshold: 0.1 });
+    <script>
+      // Reload videos when they re-enter the viewport to prevent disappearing after long idle
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+              if (video.readyState === 0 || video.error) {
+                video.load();
+              }
+              video.play().catch(() => {});
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
 
-  document.querySelectorAll('video[autoplay]').forEach(v => observer.observe(v));
-</script>
-
-</body>
+      document.querySelectorAll("video[autoplay]").forEach((v) => observer.observe(v));
+    </script>
+  </body>
 </html>
