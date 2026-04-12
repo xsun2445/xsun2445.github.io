@@ -22,14 +22,13 @@ let applyTheme = () => {
 
 let determineThemeSetting = () => {
   let s = localStorage.getItem("theme");
-  return (s === "dark" || s === "light" || s === "system") ? s : "light";
+  return s === "dark" || s === "light" || s === "system" ? s : "light";
 };
 
 let determineComputedTheme = () => {
   let s = determineThemeSetting();
   if (s === "system") {
-    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark" : "light";
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
   return s;
 };
