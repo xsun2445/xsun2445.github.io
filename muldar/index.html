@@ -448,22 +448,53 @@
 
       <!-- ─── Video (moved to teaser) ──────────────────────────────────────────── -->
 
-      <!-- ─── BibTeX ────────────────────────────────────────────────────────────── -->
-      <!--
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@inproceedings{muldarmobisys2026,
-  author    = {Sun, Xinghua and Li, Qiancheng and Gadre, Akshay},
-  title     = {MulDar: Unleashing the Potential of Distributed COTS mmWave Radar
-               by Exploiting Cross-Device Channels},
-  booktitle = {ACM MobiSys},
-  year      = {2026},
-}</code></pre>
-  </div>
-</section>
--->
     </div>
+
+    <!-- ─── BibTeX ────────────────────────────────────────────────────────────── -->
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content has-text-centered">
+        <h2 class="title">BibTeX</h2>
+        <p>If you find this work useful, please consider citing our paper!</p>
+        <div style="position: relative; text-align: left">
+          <button
+            id="bibtex-copy-btn"
+            type="button"
+            onclick="(function(btn){
+                var code = document.getElementById('bibtex-code').innerText;
+                navigator.clipboard.writeText(code).then(function(){
+                  var orig = btn.innerText;
+                  btn.innerText = 'Copied!';
+                  setTimeout(function(){ btn.innerText = orig; }, 1500);
+                });
+              })(this)"
+            style="
+              position: absolute;
+              top: 0.5rem;
+              right: 0.5rem;
+              padding: 0.3rem 0.7rem;
+              font-size: 0.85rem;
+              background: #fff;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              cursor: pointer;
+              z-index: 1;
+            "
+          >
+            <i class="fas fa-copy"></i> Copy
+          </button>
+          <pre style="text-align: left"><code id="bibtex-code">@inproceedings{sun2026muldar,
+  author    = {Sun, Xinghua and Li, Qiancheng and Gadre, Akshay},
+  title     = {MulDar: Unleashing the Potential of Distributed COTS mmWave Radar by Exploiting Cross-Device Channels},
+  booktitle = {Proceedings of the 24th Annual International Conference on Mobile Systems, Applications and Services (MobiSys '26)},
+  year      = {2026},
+  doi       = {10.1145/3745756.3809206},
+  publisher = {ACM},
+  address   = {New York, NY, USA},
+  month     = {June},
+}</code></pre>
+        </div>
+      </div>
+    </section>
 
     <!-- ─── Related Projects ─────────────────────────────────────────────────── -->
     <section class="section" style="padding-top: 0">
