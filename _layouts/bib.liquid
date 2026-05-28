@@ -178,6 +178,9 @@
           <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
         {% endif %}
       {% endif %}
+      {% if entry.website %}
+        <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
+      {% endif %}
       {% if entry.video and site.enable_video_embedding %}
         <a class="abstract btn btn-sm z-depth-0" role="button">Video</a>
       {% elsif entry.video %}
@@ -203,14 +206,11 @@
           <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
         {% endif %}
       {% endif %}
-      {% if entry.website %}
-        <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
-      {% endif %}
       {% if entry.github %}
         <a href="{{ entry.github }}" class="btn btn-sm z-depth-0" role="button">GitHub</a>
       {% endif %}
-      {% if entry.huggingface %}
-        <a href="{{ entry.huggingface }}" class="btn btn-sm z-depth-0" role="button">Dataset</a>
+      {% if entry.dataset %}
+        <a href="{{ entry.dataset }}" class="btn btn-sm z-depth-0" role="button">Dataset</a>
       {% endif %}
       {% if entry.pdf %}
         {% if entry.pdf contains '://' %}
