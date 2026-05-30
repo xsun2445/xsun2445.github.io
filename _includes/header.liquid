@@ -41,6 +41,15 @@
             {% endif %}
           </li>
 
+          <!-- Awards -->
+          <li class="nav-item">
+            {% if page.permalink == '/' %}
+              <a class="nav-link" href="#" onclick="scrollToSection('awards'); return false;"> Awards </a>
+            {% else %}
+              <a class="nav-link" href="{{ '/#awards' | relative_url }}"> Awards </a>
+            {% endif %}
+          </li>
+
           <!-- Other pages -->
           {% assign sorted_pages = site.pages | sort: 'nav_order' %}
           {% for p in sorted_pages %}
