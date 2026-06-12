@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Handheld mmWave radar for vital sign sensing</title>
+<meta name="description" content="A handheld setup that pairs a 60 GHz mmWave radar with an RGB camera, with ECG and respiration belt ground truth. CSE 599 M final project, Xinghua Sun, UW.">
+<link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%22 y=%2255%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2280%22>🌐</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="strip">
+  <span class="tag">Final project</span>
+  <span><a href="https://courses.cs.washington.edu/courses/cse599m/26sp/" target="_blank" rel="noopener">CSE 599 M · Sustainable & Ubiquitous AI</a></span>
+  <span>Spring 2026</span>
+  <span class="spacer"></span>
+  <span>Xinghua Sun</span>
+</div>
+
+<div class="col">
+  <header class="title">
+    <div class="kicker">Final project · contactless vital sign sensing</div>
+    <h1>Sensing your heartbeat with a phone's <em>other</em> eye.</h1>
+    <p class="sub">A handheld setup that pairs a 60 GHz mmWave radar with an RGB camera, for the cases where camera-only vital sensing fails.</p>
+    <div class="byline">
+      <strong>Xinghua Sun</strong> &nbsp;·&nbsp; June 2026
+    </div>
+  </header>
+</div>
+
+<div class="wide hero">
+  <img src="assets/rig-topdown.jpg" alt="Top-down photograph of the data collection rig: BGT60 radar board, ToF camera, RGB webcam, 2-inch LCD, IMU breakout, all on a Raspberry Pi 4B carrier.">
+  <div class="caption">The setup. 60 GHz Infineon BGT60TR13C radar, Arducam ToF, RGB webcam, BNO08x IMU, and a 2-inch LCD on a Raspberry Pi 4B with a battery pack. About the footprint of a phone in a thick case.</div>
+</div>
+
+<div class="col">
+
+  <div class="tldr">
+    <h3>The short version</h3>
+    <ul>
+      <li><strong>Problem.</strong> Remote photoplethysmography (rPPG) reads your pulse from tiny skin color changes. It fails on dark skin, in low light, and under motion.</li>
+      <li><strong>Idea.</strong> A 60 GHz radar measures chest wall motion directly. It does not care about light or skin tone. It does care about hand motion.</li>
+      <li><strong>Built.</strong> A handheld setup that streams radar, RGB, ToF, IMU, ECG, and a respiration belt in sync. The first piece of a future radar + camera benchmark.</li>
+    </ul>
+  </div>
+
+  <section class="body">
+    <h2><span class="num">01 · why this</span>Why rPPG alone is not enough</h2>
+    <p>Every heartbeat changes the optical absorbance of your skin by about one percent. With a good camera and a still face, that is enough for a phone to estimate your pulse. The algorithms are public. The product is compelling.</p>
+    <p>But it does not always work. Liao et&nbsp;al. [10] measured per-video success rates of passive smartphone rPPG across three skin tone groups, drawing on real-world data from a clinical trial. The success rate drops fast as skin tone gets darker. The algorithm is the same. The optical signal is not.</p>
+
+    <div class="stats">
+      <div class="stat"><span class="label">Skin tone group&nbsp;1</span><div class="bar"><span style="width:58%"></span></div><span class="pct">58%</span></div>
+      <div class="stat"><span class="label">Skin tone group&nbsp;2</span><div class="bar"><span style="width:45%"></span></div><span class="pct">45%</span></div>
+      <div class="stat"><span class="label">Skin tone group&nbsp;3</span><div class="bar"><span style="width:25%"></span></div><span class="pct">25%</span></div>
+    </div>
+    <p class="caption">Per-video success rate of passive smartphone rPPG, from Liao et&nbsp;al. [10]. Same algorithm, different SNR.</p>
+
+    <p>Low light, head motion, walking, typing, bad camera angle, backlight. Pick almost any real-world condition and the SNR collapses [1, 2]. rPPG is not wrong. It is a thin signal that needs good conditions.</p>
+  </section>
+
+  <section class="body">
+    <h2><span class="num">02 · the other modality</span>What a millimeter-wave radar sees</h2>
+    <p>An FMCW radar is a ranging machine. At 60 GHz it resolves sub-millimeter changes in distance. That is fine enough to see a heartbeat, which moves the chest wall by a few millimeters, and breathing, which moves it by a few centimeters. The idea goes back to Adib et&nbsp;al. [11] on RF-based vital sensing at home, with later work showing that deep models on radar IQ can even reconstruct the seismocardiogram waveform [12]. Light in the room does not matter. Neither does skin tone.</p>
+
+    <figure class="figure-block">
+      <img src="assets/mmwave-principle.png" alt="A person sitting with a Polar chest strap, with a small 60 GHz mmWave radar dev board on a tripod across the desk.">
+      <div class="caption">A stationary lab setup. The radar points at the chest. A chest strap records the seismocardiogram for ground truth. Adapted from Pi-ViMo [3].</div>
+    </figure>
+
+    <div class="two-fig">
+      <figure>
+        <img src="assets/chest-motion-diagram.png" alt="Diagram showing inhale vs exhale chest-wall displacement relative to a Tx/Rx antenna.">
+        <div class="caption">Inhale and exhale change the distance from the antenna to the chest wall by a few centimeters. A heartbeat does it by a few millimeters on top.</div>
+      </figure>
+      <figure>
+        <img src="assets/radar-phase-signal.png" alt="Time-series plot of unwrapped radar phase showing breathing oscillation with smaller heartbeat ripples superimposed.">
+        <div class="caption">Unwrapped phase from a mmWave channel. Respiration is the slow oscillation. Individual heartbeats are the ripples on top. From Pi-ViMo [3].</div>
+      </figure>
+    </div>
+
+    <p>There is a cost. The same sensitivity that lets the radar see your heartbeat also lets it see everything else. A hand twitch. A shoulder roll. The phone wobbling in your grip. Stationary mmWave vital sensing is mature, with 90th percentile error under 6 bpm [3, 6, 7]. Handheld mmWave is the open question [8]. That is where the camera comes back in. The motion that destroys the radar which needs to be corrected.</p>
+  </section>
+
+  <section class="body">
+    <h2><span class="num">03 · the twist</span>Make Vital Sensing Handheld</h2>
+    <div class="wide" style="margin: 12px 0 24px;">
+      <img src="assets/rig-handheld.jpg" alt="Sensing with the setup hold in hand。">
+      <div class="caption">Held the way you hold a phone.</div>
+    </div>
+    <p>Almost every prior mmWave vital-sensing paper assumes a fixed setup and the subject staying still [3, 4, 6, 7, 11, 12]. The moment the sensor itself moves, the chest wall signal sits on top of a much larger motion variations. Remember that the heart beat only induce sub-mm displacement and the frequency is about the jitter caused by hand tremor. </p>
+    <p>Question 1: With camera and mmWave sensor sensitive to different motion patterns, can we improve the accuracy of handheld vital sensing?</p>
+    <p>Question 2: Can we do it with the same form factor a phone has, without external sensors strapped to the body? Literature mostly skip the form factor, with the closest prior work using high-power research-grade radar without pairing it with a camera [8].</p>
+    <aside class="aside">
+      <strong>Why now?</strong> Phone radar already shipped. Google's Pixel 4 included a Soli chip for gesture sensing (Although it's the only model till now that has it) [13]. Ultra-wideband radars are common in modern phones [5]. The hardware is already in the consumer's pocket. The data and methodology to pair it with the camera are not.
+      <img src="assets/pixel4-soli.png" alt="Annotated photograph of the Pixel 4 top bezel highlighting the Soli radar chip alongside the front-facing camera and other sensors.">
+    </aside>
+  </section>
+
+  <section class="body">
+    <h2><span class="num">04 · the setup</span>One Raspberry Pi, six sensors, one battery</h2>
+    <p>Since the mmWave sensor on Pixel 4 is not accessible for customization, we built our own setup that has common sensors a phone would have. Every component is off-the-shelf and roughly consumer-priced. The point is not new hardware. The point is a faithful, synchronous capture of every modality a future phone could plausibly carry, plus the ground truth to train against.</p>
+    <div class="rig-grid">
+      <div class="item cool"><span class="k">mmWave radar</span>Infineon BGT60TR13C, 60 GHz FMCW, low-cost and low-power</div>
+      <div class="item"><span class="k">RGB camera</span>USB webcam, 640&times;360 at 15 fps, for rPPG</div>
+      <div class="item cool"><span class="k">ToF camera</span>Arducam B0410, CSI, for depth context</div>
+      <div class="item cool"><span class="k">IMU</span>BNO08x, for handheld motion</div>
+      <div class="item"><span class="k">ECG ground truth</span>Polar H10 chest strap (BLE)</div>
+      <div class="item"><span class="k">Respiration ground truth</span>Vernier Go Direct belt (BLE)</div>
+      <div class="item cool"><span class="k">Compute</span>Raspberry Pi 4B + USB battery</div>
+      <div class="item cool"><span class="k">Status display</span>2-inch SPI LCD, for headless operation</div>
+    </div>
+  </section>
+
+  <section class="body">
+    <h2><span class="num">05 · what was built</span>The software and three dashboards</h2>
+    <p>A FastAPI + WebSocket sensor hub runs on the Pi. Each sensor lives in its own process. The BLE devices share one thread so they can share the D-Bus connection.</p>
+    <p><strong>Sync.</strong> Every sample is stamped at the Pi when it arrives.</p>
+    <p><strong>Latency.</strong> Each client gets a latest-wins queue, so a slow browser drops old frames instead of buffering. Frames are compressed on the Pi and decoded off the main thread in the browser. The result: a 20 Hz stream renders smoothly with end-to-end latency under 100 ms and no drift over 10 minutes.</p>
+    <p>Three dashboards run on this hub. A multi-modal capture view. A radar-only vital-signs view with browser-side HR and RR estimation. An rPPG-only view that runs POS [14] on the webcam's JPEG frames (cross-checked against the rPPG-Toolbox [9]). All three open in any browser on the same Wi-Fi.</p>
+
+    <div class="dashboard-vids">
+      <figure>
+        <video src="assets/cse599_shortvid_allsensors.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <div class="caption">Multi-modal capture. Radar, ToF, RGB, IMU, ECG, and respiration streaming together in one view.</div>
+      </figure>
+      <figure>
+        <video src="assets/cse599_shortvid_mmwave.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <div class="caption">Radar vital signs. Browser-side HR and RR estimation from the unwrapped radar phase, with chest-strap and respiration-belt ground truth.</div>
+      </figure>
+      <figure>
+        <video src="assets/cse599_shortvid_rppg.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <div class="caption">rPPG vital signs. POS algorithm on JPEG frames from the webcam, with Polar HR ground truth alongside.</div>
+      </figure>
+    </div>
+
+  </section>
+
+  <section class="body">
+    <h2><span class="num">06 · what's next</span>From the setup to dataset to model</h2>
+    <p>Next: collect 5 to 10 hours of synchronized data from 10 to 15 subjects across the conditions that stress rPPG (low light, dark skin, walking, hand motion). 
+        Train sensor fusion models [7] that learns from real ground truth when to trust which sensor. Build a mmWave + rPPG benchmark.</p>
+  </section>
+
+  <section class="refs">
+    <h2>References</h2>
+    <ol>
+      <li>B. Acharya et&nbsp;al. The reliability of remote photoplethysmography under low illumination and elevated heart rates. <em>npj Digital Medicine</em>, 2025.</li>
+      <li>E. M. Nowara, D. McDuff, A. Veeraraghavan. A meta-analysis of the impact of skin type and gender on non-contact photoplethysmography measurements. <em>CVPRW</em>, 2020.</li>
+      <li>B. Zhang et&nbsp;al. Pi-ViMo: Physiology-inspired robust vital sign monitoring using mmWave radars. <em>ACM Transactions on Internet of Things</em>, 2023.</li>
+      <li>L. Xu et&nbsp;al. Soli-enabled noncontact heart rate detection for sleep and meditation tracking. <em>Scientific Reports</em>, 2023.</li>
+      <li>E. Gruzewska et&nbsp;al. UWB radar-based heart rate monitoring: A transfer learning approach. <em>arXiv:2507.14195</em>, 2025.</li>
+      <li>C.-H. Hsieh, T.-L. Tsai, P.-H. Tseng. Harmonic MUSIC method for mmWave radar-based vital sign estimation. <em>arXiv:2408.01951</em>, 2024.</li>
+      <li>Y. Wang et&nbsp;al. Vital sign monitoring in dynamic environment via mmWave radar and camera fusion. <em>IEEE Transactions on Mobile Computing</em>, 2024.</li>
+      <li>J. Gong et&nbsp;al. RF vital sign sensing under free body movement. <em>Proc. ACM IMWUT</em>, 2021.</li>
+      <li>X. Liu et&nbsp;al. rPPG-Toolbox: Deep remote PPG toolbox. <em>NeurIPS Datasets and Benchmarks Track</em>, 2023.</li>
+      <li>S. Liao, P. Di Achille, J. Wu et&nbsp;al. Passive heart-rate monitoring during smartphone use in everyday life. <em>Nature</em>, 2026.</li>
+      <li>F. Adib, H. Mao, Z. Kabelac, D. Katabi, R. C. Miller. Smart homes that monitor breathing and heart rate. <em>CHI</em>, 2015.</li>
+      <li>U. Ha, S. Assana, F. Adib. Contactless seismocardiography via deep learning radars. <em>MobiCom</em>, 2020.</li>
+      <li>J. Lien, N. Gillian, M. E. Karagozler, P. Amihood, C. Schwesig, E. Olson, H. Raja, I. Poupyrev. Soli: Ubiquitous gesture sensing with millimeter wave radar. <em>ACM TOG (SIGGRAPH)</em>, 2016.</li>
+      <li>W. Wang, A. C. den Brinker, S. Stuijk, G. de Haan. Algorithmic principles of remote PPG. <em>IEEE Transactions on Biomedical Engineering</em>, 64(7):1479&ndash;1491, 2017.</li>
+    </ol>
+  </section>
+
+</div>
+
+<footer class="foot">
+  <a href="https://courses.cs.washington.edu/courses/cse599m/26sp/" target="_blank" rel="noopener">CSE 599 M</a> &nbsp;·&nbsp; Spring 2026 &nbsp;·&nbsp; Xinghua Sun
+</footer>
+
+</body>
+</html>
