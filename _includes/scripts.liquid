@@ -176,6 +176,15 @@
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  function updateNavbarOffset() {
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+      document.documentElement.style.setProperty('--navbar-offset', navbar.offsetHeight + 16 + 'px');
+    }
+  }
+  window.addEventListener('load', updateNavbarOffset);
+  window.addEventListener('resize', updateNavbarOffset);
 </script>
 
 <!-- Load Common JS -->

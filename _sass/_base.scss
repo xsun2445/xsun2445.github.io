@@ -2,6 +2,21 @@
  * Styles for the base elements of the theme.
  ******************************************************************************/
 
+:root {
+  --navbar-offset: 96px;
+}
+
+// Anchored sections should not be hidden under the fixed navbar when scrolled to.
+#news,
+#talks,
+#publications,
+#awards,
+#experience,
+#services,
+#teaching {
+  scroll-margin-top: var(--navbar-offset);
+}
+
 // Typography
 
 p,
@@ -55,7 +70,10 @@ table.table a {
 .news td a em,
 .awards-list a,
 .awards-list a strong,
-.awards-list a em {
+.awards-list a em,
+.talks-list a,
+.talks-list a strong,
+.talks-list a em {
   color: inherit !important;
   text-decoration: none !important;
   transition: color 0.15s ease-in-out;
@@ -66,7 +84,10 @@ table.table a {
 .news td a:hover em,
 .awards-list a:hover,
 .awards-list a:hover strong,
-.awards-list a:hover em {
+.awards-list a:hover em,
+.talks-list a:hover,
+.talks-list a:hover strong,
+.talks-list a:hover em {
   color: var(--global-theme-color) !important;
   text-decoration: none !important;
 }
@@ -423,33 +444,44 @@ ul.task-list input[type="checkbox"] {
   text-align: center;
 
   .contact-icons {
-    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.35rem;
 
     a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 50%;
+      transition: all 0.2s ease-in-out;
+
       img {
-        width: 3.2rem;
-        height: 3.2rem;
-        margin-bottom: 1rem;
+        width: 1.35rem;
+        height: 1.35rem;
       }
 
       svg {
-        width: 3.5rem;
-        height: 4rem;
-        margin-bottom: 0.5rem;
+        width: 1.35rem;
+        height: 1.35rem;
 
         image {
-          width: 3.5rem;
-          height: 3.5rem;
+          width: 1.35rem;
+          height: 1.35rem;
         }
       }
 
       i::before {
-        color: var(--global-text-color);
+        color: var(--global-text-color-light);
         transition-property: all 0.2s ease-in-out;
       }
 
       &:hover {
         text-decoration: none;
+        background-color: var(--global-divider-color);
 
         i::before {
           color: var(--global-theme-color);
@@ -460,6 +492,7 @@ ul.task-list input[type="checkbox"] {
 
   .contact-note {
     font-size: 0.8rem;
+    margin-top: 0.5rem;
   }
 }
 
@@ -603,6 +636,10 @@ footer.sticky-bottom {
   mjx-container[jax="CHTML"][display="true"] {
     display: unset;
   }
+}
+
+.desc {
+  color: var(--global-text-color-light);
 }
 
 .post-list {
@@ -1419,4 +1456,17 @@ ninja-keys::part(ninja-input-wrapper) {
 ::highlight(search) {
   background-color: var(--global-theme-color);
   color: var(--global-text-color);
+}
+
+// Experience logos — swap by theme
+.exp-logo-dark {
+  display: none;
+}
+html[data-theme="dark"] {
+  .exp-logo-light {
+    display: none;
+  }
+  .exp-logo-dark {
+    display: inline;
+  }
 }

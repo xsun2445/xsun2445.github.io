@@ -23,12 +23,21 @@
             </a>
           </li>
 
-          <!-- Home -->
+          <!-- About -->
           <li class="nav-item">
             {% if page.permalink == '/' %}
-              <a class="nav-link" href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;"> Home </a>
+              <a class="nav-link" href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;"> About </a>
             {% else %}
-              <a class="nav-link" href="{{ '/' | relative_url }}"> Home </a>
+              <a class="nav-link" href="{{ '/' | relative_url }}"> About </a>
+            {% endif %}
+          </li>
+
+          <!-- Talks -->
+          <li class="nav-item">
+            {% if page.permalink == '/' %}
+              <a class="nav-link" href="#" onclick="scrollToSection('talks'); return false;"> Talks </a>
+            {% else %}
+              <a class="nav-link" href="{{ '/#talks' | relative_url }}"> Talks </a>
             {% endif %}
           </li>
 
@@ -49,6 +58,25 @@
               <a class="nav-link" href="{{ '/#awards' | relative_url }}"> Awards </a>
             {% endif %}
           </li>
+
+          <!-- Experience -->
+          <li class="nav-item">
+            {% if page.permalink == '/' %}
+              <a class="nav-link" href="#" onclick="scrollToSection('experience'); return false;"> Experience </a>
+            {% else %}
+              <a class="nav-link" href="{{ '/#experience' | relative_url }}"> Experience </a>
+            {% endif %}
+          </li>
+
+          <!-- Services -->
+          <li class="nav-item">
+            {% if page.permalink == '/' %}
+              <a class="nav-link" href="#" onclick="scrollToSection('services'); return false;"> Services </a>
+            {% else %}
+              <a class="nav-link" href="{{ '/#services' | relative_url }}"> Services </a>
+            {% endif %}
+          </li>
+
 
           <!-- Other pages -->
           {% assign sorted_pages = site.pages | sort: 'nav_order' %}

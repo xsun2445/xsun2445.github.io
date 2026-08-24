@@ -8,7 +8,7 @@ layout: default
         <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
         {{ site.last_name }}
       {% else %}
-        {{ site.title }}
+        {{ site.title | regex_replace: '([一-鿿]+)', '<span style="color: var(--global-text-color-light)">\1</span>' }}
       {% endif %}
     </h1>
     <p class="desc">{{ page.subtitle }}</p>
@@ -47,9 +47,17 @@ layout: default
 
     <!-- News -->
     {% if page.news and site.announcements and site.announcements.enabled %}
-      <h2>News</h2>
-      {% include news.liquid limit=true %}
+      <div id="news">
+        <h2>News</h2>
+        {% include news.liquid limit=true %}
+      </div>
     {% endif %}
+
+    {%- comment -%} Talks {%- endcomment -%}
+    <div id="talks" style="margin-top: 2rem;">
+      <h2>Talks</h2>
+      {% include talks.liquid %}
+    </div>
 
     <!-- Latest posts -->
     {% if site.latest_posts and site.latest_posts.enabled %}
@@ -83,52 +91,100 @@ layout: default
     <div id="awards">
       <h2>Awards</h2>
       <ul class="awards-list" style="list-style: none; padding: 0; margin-top: 0.rem;">
-        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">ACM MobiSys Rising Star (2026)</li>
+        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
+          ACM MobiSys Rising Star <span style="color: var(--global-text-color-light)">(2026)</span>
+        </li>
         <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
           {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-          UW ECE Research Showcase Best Demo Award sponsored by Apple (2025)
+          UW ECE Research Showcase Best Demo Award sponsored by Apple 
+            <span style="color: var(--global-text-color-light)">(2025)</span>
           {%- comment -%} </a> {%- endcomment -%}
         </li>
         <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
           <a href="https://www.t-mobile.com/news/network/2024-t-challenge-winners">
-            T-Mobile T-Challenge - AI for Telecommunications Finalist & Most Engaging Presentation Award (2024)
+            T-Mobile T-Challenge - AI for Telecommunications Finalist & Most Engaging Presentation Award 
+            <span style="color: var(--global-text-color-light)">(2024)</span>
           </a>
         </li>
         <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-          <a href="https://sensys.acm.org/2022/award/">ACM Sensys 2022 Best Demo Runner-up (2022)</a>
+          <a href="https://sensys.acm.org/2022/award/">ACM Sensys 2022 Best Demo Runner-up </a>
+            <span style="color: var(--global-text-color-light)">(2022)</span>
+        </li>
+      </ul>
+    </div>
+
+    {%- comment -%} Experience {%- endcomment -%}
+    <div id="experience">
+      <h2>Experience</h2>
+      <ul style="list-style: none; padding: 0; margin-top: 0.rem;">
+        <li style="display: flex; align-items: center; padding: 0.3rem; margin-bottom: 0.rem;">
+          <img
+            src="{{ '/assets/img/nvidia_logo.png' | relative_url }}"
+            alt="NVIDIA"
+            class="exp-logo-light"
+            style="width: 120px; margin-right: 1rem; flex-shrink: 0;"
+          />
+          <img
+            src="{{ '/assets/img/nvidia_logo_wht.png' | relative_url }}"
+            alt="NVIDIA"
+            class="exp-logo-dark"
+            style="width: 120px; margin-right: 1rem; flex-shrink: 0;"
+          />
+          <div>
+            Software Engineer Intern, NVIDIA XR Team — Robotics and Physical AI
+            <span style="color: var(--global-text-color-light)">(Summer 2026 - present)</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    {%- comment -%} Services {%- endcomment -%}
+    <div id="services">
+      <h2>Services</h2>
+      <ul style="list-style: none; padding: 0; margin-top: 0.rem;">
+        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
+          {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
+          Reviewer - ACM Transactions on Sensor Networks (TOSN)
+          {%- comment -%} </a> {%- endcomment -%}
+        </li>
+        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
+          {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
+          Reviewer - ACM Transactions on Computing for Healthcare (HEALTH)
+          {%- comment -%} </a> {%- endcomment -%}
         </li>
       </ul>
     </div>
 
     {%- comment -%} Teaching {%- endcomment -%}
-    <h2>Services</h2>
-    <ul style="list-style: none; padding: 0; margin-top: 0.rem;">
-      <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-        {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-        Invited Reviewer for ACM Transactions on Computing for Healthcare (HEALTH)
-        {%- comment -%} </a> {%- endcomment -%}
-      </li>
-      <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-        {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-        Teaching Assistant - UW EE 497/598 Engineering Entrepreneurial Capstone (Winter 2026, Autumn 2026)
-        {%- comment -%} </a> {%- endcomment -%}
-      </li>
-      <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-        {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-        Teaching Assistant - UW EE 419/565 Computer Communication Networks (Spring 2025)
-        {%- comment -%} </a> {%- endcomment -%}
-      </li>
-      <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-        {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-        Teaching Assistant - UW EE 417/506 Modern Wireless Communications (Winter 2025)
-        {%- comment -%} </a> {%- endcomment -%}
-      </li>
-      <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-        {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-        Teaching Assistant - UW EE 215 Fundamentals of Electrical Engineering (Winter 2024)
-        {%- comment -%} </a> {%- endcomment -%}
-      </li>
-    </ul>
+    <div id="teaching">
+      <h2>Teaching</h2>
+      <ul style="list-style: none; padding: 0; margin-top: 0.rem;">
+        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
+          {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
+          Teaching Assistant - UW EE 497/598 Engineering Entrepreneurial Capstone 
+          <span style="color: var(--global-text-color-light)">(2026)</span>
+          {%- comment -%} </a> {%- endcomment -%}
+        </li>
+        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
+          {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
+          Teaching Assistant - UW EE 419/565 Computer Communication Networks 
+          <span style="color: var(--global-text-color-light)">(Spring 2025)</span>
+          {%- comment -%} </a> {%- endcomment -%}
+        </li>
+        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
+          {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
+          Teaching Assistant - UW EE 417/506 Modern Wireless Communications 
+          <span style="color: var(--global-text-color-light)">(Winter 2025)</span>
+          {%- comment -%} </a> {%- endcomment -%}
+        </li>
+        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
+          {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
+          Teaching Assistant - UW EE 215 Fundamentals of Electrical Engineering 
+          <span style="color: var(--global-text-color-light)">(Winter 2024)</span>
+          {%- comment -%} </a> {%- endcomment -%}
+        </li>
+      </ul>
+    </div>
     {%- comment -%}
       <ul>
         <li>UW EE 215 Fundamentals of Electrical Engineering (TA)</li>

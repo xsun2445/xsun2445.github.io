@@ -1,0 +1,22 @@
+<ul class="talks-list" style="list-style: none; padding: 0; margin-top: 0.rem;">
+  {% for talk in site.data.talks %}
+    <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
+      {{ talk.title }}
+      <span style="color: var(--global-text-color-light)">
+        ({{ talk.venue }}{% if talk.year %}, {{ talk.year }}{% endif %})
+      </span>
+      {% if talk.video or talk.slides %}
+        <span style="color: var(--global-text-color-light)">—</span>
+        {% if talk.video %}
+          <a href="{{ talk.video }}">Video</a>
+        {% endif %}
+        {% if talk.video and talk.slides %}
+          <span style="color: var(--global-text-color-light)">·</span>
+        {% endif %}
+        {% if talk.slides %}
+          <a href="{{ talk.slides }}">Slides</a>
+        {% endif %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
