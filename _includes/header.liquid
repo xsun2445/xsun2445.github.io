@@ -1,82 +1,68 @@
 <header>
   <!-- Nav Bar -->
-  <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
+  <nav
+    id="navbar"
+    class="navbar navbar-light navbar-expand-md {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}"
+    aria-label="Primary navigation"
+  >
     <div class="container">
-      {% if page.permalink == '/' and site.enable_navbar_social %}
-        <!-- Social Icons -->
-        <div class="navbar-brand social">{% include social.liquid %}</div>
-      {% endif %}
-      {%- comment -%} <div class="collapse navbar-collapse" id="navbarNav"> {%- endcomment -%}
-      <div class="navbar-collapse" style="display: flex; justify-content: space-between; width: 100%;">
-        <ul class="navbar-nav flex-nowrap">
-          {% for page in site.pages %}
-            {% if page.permalink == '/' %} {% assign about_title = page.title %} {% endif %}
-          {% endfor %}
+      {% assign about_title = site.title %}
+      {% for p in site.pages %}
+        {% if p.permalink == '/' %}
+          {% assign about_title = p.title %}
+        {% endif %}
+      {% endfor %}
 
-          <!-- About -->
-          <li class="nav-item {% if page.permalink == '/' %}active{% endif %}">
-            <a class="nav-link" href="{{ '/' | relative_url }}">
-              {{- about_title }}
-              {% if page.permalink == '/' %}
-                <span class="sr-only">(current)</span>
-              {% endif %}
-            </a>
-          </li>
+      <a
+        class="navbar-brand title font-weight-lighter"
+        href="{{ '/#about' | relative_url }}"
+        {% if page.permalink == '/' %}
+          aria-current="page"
+        {% endif %}
+      >
+        {{- about_title -}}
+      </a>
 
-          <!-- About -->
-          <li class="nav-item">
-            {% if page.permalink == '/' %}
-              <a class="nav-link" href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;"> About </a>
-            {% else %}
-              <a class="nav-link" href="{{ '/' | relative_url }}"> About </a>
-            {% endif %}
-          </li>
+      <button
+        class="navbar-toggler collapsed ml-auto"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
 
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
           <!-- Talks -->
           <li class="nav-item">
-            {% if page.permalink == '/' %}
-              <a class="nav-link" href="#" onclick="scrollToSection('talks'); return false;"> Talks </a>
-            {% else %}
-              <a class="nav-link" href="{{ '/#talks' | relative_url }}"> Talks </a>
-            {% endif %}
+            <a class="nav-link" href="{{ '/#talks' | relative_url }}">Talks</a>
           </li>
 
           <!-- Publications -->
           <li class="nav-item">
-            {% if page.permalink == '/' %}
-              <a class="nav-link" href="#" onclick="scrollToSection('publications'); return false;"> Publications </a>
-            {% else %}
-              <a class="nav-link" href="{{ '/#publications' | relative_url }}"> Publications </a>
-            {% endif %}
+            <a class="nav-link" href="{{ '/#publications' | relative_url }}">Publications</a>
           </li>
 
           <!-- Awards -->
           <li class="nav-item">
-            {% if page.permalink == '/' %}
-              <a class="nav-link" href="#" onclick="scrollToSection('awards'); return false;"> Awards </a>
-            {% else %}
-              <a class="nav-link" href="{{ '/#awards' | relative_url }}"> Awards </a>
-            {% endif %}
+            <a class="nav-link" href="{{ '/#awards' | relative_url }}">Awards</a>
           </li>
 
           <!-- Experience -->
           <li class="nav-item">
-            {% if page.permalink == '/' %}
-              <a class="nav-link" href="#" onclick="scrollToSection('experience'); return false;"> Experience </a>
-            {% else %}
-              <a class="nav-link" href="{{ '/#experience' | relative_url }}"> Experience </a>
-            {% endif %}
+            <a class="nav-link" href="{{ '/#experience' | relative_url }}">Experience</a>
           </li>
 
           <!-- Services -->
           <li class="nav-item">
-            {% if page.permalink == '/' %}
-              <a class="nav-link" href="#" onclick="scrollToSection('services'); return false;"> Services </a>
-            {% else %}
-              <a class="nav-link" href="{{ '/#services' | relative_url }}"> Services </a>
-            {% endif %}
+            <a class="nav-link" href="{{ '/#services' | relative_url }}">Services</a>
           </li>
-
 
           <!-- Other pages -->
           {% assign sorted_pages = site.pages | sort: 'nav_order' %}
@@ -146,18 +132,15 @@
           {% if site.search_enabled %}
             <!-- Search -->
             <li class="nav-item">
-              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+              <button id="search-toggle" type="button" title="Search" aria-label="Search" onclick="openSearchModal()">
                 <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
               </button>
             </li>
           {% endif %}
           {% if site.enable_darkmode %}
-            <!-- Spacer to push toggle to right -->
-            <li style="flex: 1;"></li>
-
             <!-- Toogle theme mode -->
-            <li class="toggle-container">
-              <button id="light-toggle" title="Change theme">
+            <li class="nav-item toggle-container">
+              <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme">
                 <i class="ti ti-sun-moon" id="light-toggle-system"></i>
                 <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
                 <i class="ti ti-sun-filled" id="light-toggle-light"></i>

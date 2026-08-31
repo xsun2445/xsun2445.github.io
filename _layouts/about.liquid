@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div class="post">
+<div id="about" class="post">
   <header class="post-header">
     <h1 class="post-title">
       {% if site.title == 'blank' %}
@@ -19,6 +19,7 @@ layout: default
       <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
         {% if page.profile.image %}
           {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+          {% assign profile_image_alt = page.profile.image_alt | default: page.title %}
           {% if page.profile.image_circular %}
             {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
           {% else %}
@@ -28,7 +29,7 @@ layout: default
           {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
       30vw, 95vw"{% endcapture %}
           {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=profile_image_alt
             cache_bust=true
           %}
         {% endif %}
@@ -43,36 +44,38 @@ layout: default
       </div>
     {% endif %}
 
-    <div class="clearfix">{{ content }}</div>
+    <div class="clearfix profile-intro">{{ content }}</div>
 
     <!-- News -->
     {% if page.news and site.announcements and site.announcements.enabled %}
-      <div id="news">
-        <h2>News</h2>
+      <section id="news" class="profile-section">
+        <h2 class="profile-section__title">News</h2>
         {% include news.liquid limit=true %}
-      </div>
+      </section>
     {% endif %}
 
     {%- comment -%} Talks {%- endcomment -%}
-    <div id="talks" style="margin-top: 2rem;">
-      <h2>Talks</h2>
+    <section id="talks" class="profile-section">
+      <h2 class="profile-section__title">Talks</h2>
       {% include talks.liquid %}
-    </div>
+    </section>
 
     <!-- Latest posts -->
     {% if site.latest_posts and site.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
+      <section id="latest-posts" class="profile-section">
+        <h2 class="profile-section__title">
+          <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest posts</a>
+        </h2>
+        {% include latest_posts.liquid %}
+      </section>
     {% endif %}
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <div id="publications" style="margin-top: 2rem;">
-        <h2>Publications</h2>
+      <section id="publications" class="profile-section">
+        <h2 class="profile-section__title">Publications</h2>
         {% include selected_papers.liquid %}
-      </div>
+      </section>
     {% endif %}
 
     <!-- Social -->
@@ -88,109 +91,123 @@ layout: default
     {% endif %}
 
     {%- comment -%} Awards {%- endcomment -%}
-    <div id="awards">
-      <h2>Awards</h2>
-      <ul class="awards-list" style="list-style: none; padding: 0; margin-top: 0.rem;">
-        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-          ACM MobiSys Rising Star <span style="color: var(--global-text-color-light)">(2026)</span>
-        </li>
-        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-          {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-          UW ECE Research Showcase Best Demo Award sponsored by Apple 
-            <span style="color: var(--global-text-color-light)">(2025)</span>
-          {%- comment -%} </a> {%- endcomment -%}
-        </li>
-        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
+    <section id="awards" class="profile-section">
+      <h2 class="profile-section__title">Awards</h2>
+      <ul class="profile-list">
+        <li class="profile-list__item">ACM MobiSys Rising Star <span class="profile-meta">(2026)</span></li>
+        <li class="profile-list__item">UW ECE Research Showcase Best Demo Award sponsored by Apple <span class="profile-meta">(2025)</span></li>
+        <li class="profile-list__item">
           <a href="https://www.t-mobile.com/news/network/2024-t-challenge-winners">
-            T-Mobile T-Challenge - AI for Telecommunications Finalist & Most Engaging Presentation Award 
-            <span style="color: var(--global-text-color-light)">(2024)</span>
+            T-Mobile T-Challenge — AI for Telecommunications Finalist & Most Engaging Presentation Award
           </a>
+          <span class="profile-meta">(2024)</span>
         </li>
-        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-          <a href="https://sensys.acm.org/2022/award/">ACM Sensys 2022 Best Demo Runner-up </a>
-            <span style="color: var(--global-text-color-light)">(2022)</span>
+        <li class="profile-list__item">
+          <a href="https://sensys.acm.org/2022/award/">ACM SenSys 2022 Best Demo Runner-up</a>
+          <span class="profile-meta">(2022)</span>
         </li>
       </ul>
-    </div>
+    </section>
 
     {%- comment -%} Experience {%- endcomment -%}
-    <div id="experience">
-      <h2>Experience</h2>
-      <ul style="list-style: none; padding: 0; margin-top: 0.rem;">
-        <li style="display: flex; align-items: center; padding: 0.3rem; margin-bottom: 0.rem;">
-          <img
-            src="{{ '/assets/img/nvidia_logo.png' | relative_url }}"
-            alt="NVIDIA"
-            class="exp-logo-light"
-            style="width: 120px; margin-right: 1rem; flex-shrink: 0;"
-          />
-          <img
-            src="{{ '/assets/img/nvidia_logo_wht.png' | relative_url }}"
-            alt="NVIDIA"
-            class="exp-logo-dark"
-            style="width: 120px; margin-right: 1rem; flex-shrink: 0;"
-          />
-          <div>
-            Software Engineer Intern, NVIDIA XR Team — Robotics and Physical AI
-            <span style="color: var(--global-text-color-light)">(Summer 2026 - present)</span>
+    <section id="experience" class="profile-section">
+      <h2 class="profile-section__title">Experience</h2>
+      <p class="career-group-label">Professional</p>
+      <ul class="career-list">
+        <li class="career-entry">
+          <div class="career-identity">
+            <img
+              src="{{ '/assets/img/nvidia_logo_trimmed.png' | relative_url }}"
+              alt="NVIDIA"
+              class="career-logo career-logo--nvidia exp-logo-light"
+            >
+            <img
+              src="{{ '/assets/img/nvidia_logo_wht_trimmed.png' | relative_url }}"
+              alt=""
+              aria-hidden="true"
+              class="career-logo career-logo--nvidia exp-logo-dark"
+            >
+          </div>
+          <div class="career-copy">
+            <div class="career-heading">
+              <span class="career-role">Software Engineer Intern</span>
+              <span class="profile-meta">Summer 2026</span>
+            </div>
+            <div class="career-detail">NVIDIA · XR · Robotics and Physical AI</div>
           </div>
         </li>
       </ul>
-    </div>
+      <p class="career-group-label">Education</p>
+      <ul class="career-list">
+        <li class="career-entry">
+          <div class="career-identity">
+            <img src="{{ '/assets/img/uw_signature.svg' | relative_url }}" alt="University of Washington" class="career-logo">
+          </div>
+          <div class="career-copy">
+            <div class="career-heading">
+              <span class="career-role">Ph.D. in Electrical and Computer Engineering</span>
+              <span class="profile-meta">2023 &ndash; present</span>
+            </div>
+            <div class="career-detail">University of Washington · Advisor: <a href="https://www.akshaygadre.com/">Akshay Gadre</a> · <a href="https://newtlab.ece.uw.edu/">Networking and Emerging Wireless Technologies Lab (NEWT)</a></div>
+          </div>
+        </li>
+        <li class="career-entry">
+          <div class="career-identity">
+            <img src="{{ '/assets/img/columbia_signature.svg' | relative_url }}" alt="Columbia University" class="career-logo">
+          </div>
+          <div class="career-copy">
+            <div class="career-heading">
+              <span class="career-role">M.S. in Electrical Engineering</span>
+              <span class="profile-meta">2021 &ndash; 2023</span>
+            </div>
+            <div class="career-detail">Columbia University · Advisor: <a href="http://fredjiang.com/">Fred Jiang</a> · <a href="http://icsl.ee.columbia.edu/">Intelligent and Connected Systems Lab (ICSL)</a></div>
+          </div>
+        </li>
+        <li class="career-entry">
+          <div class="career-identity">
+            <img src="/assets/img/scut_signature.png" alt="South China University of Technology" class="career-logo career-logo--scut">
+          </div>
+          <div class="career-copy">
+            <div class="career-heading">
+              <span class="career-role">B.E. in Automation Science and Engineering</span>
+              <span class="profile-meta">2017 &ndash; 2021</span>
+            </div>
+            <div class="career-detail">South China University of Technology</div>
+          </div>
+        </li>
+      </ul>
+    </section>
 
     {%- comment -%} Services {%- endcomment -%}
-    <div id="services">
-      <h2>Services</h2>
-      <ul style="list-style: none; padding: 0; margin-top: 0.rem;">
-        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-          {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-          Reviewer - ACM Transactions on Sensor Networks (TOSN)
-          {%- comment -%} </a> {%- endcomment -%}
-        </li>
-        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-          {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-          Reviewer - ACM Transactions on Computing for Healthcare (HEALTH)
-          {%- comment -%} </a> {%- endcomment -%}
-        </li>
+    <section id="services" class="profile-section">
+      <h2 class="profile-section__title">Services</h2>
+      <ul class="profile-list">
+        <li class="profile-list__item">Reviewer — ACM Transactions on Sensor Networks (TOSN)</li>
+        <li class="profile-list__item">Reviewer — ACM Transactions on Computing for Healthcare (HEALTH)</li>
       </ul>
-    </div>
+    </section>
 
     {%- comment -%} Teaching {%- endcomment -%}
-    <div id="teaching">
-      <h2>Teaching</h2>
-      <ul style="list-style: none; padding: 0; margin-top: 0.rem;">
-        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-          {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-          Teaching Assistant - UW EE 497/598 Engineering Entrepreneurial Capstone 
-          <span style="color: var(--global-text-color-light)">(2026)</span>
-          {%- comment -%} </a> {%- endcomment -%}
+    <section id="teaching" class="profile-section">
+      <h2 class="profile-section__title">Teaching</h2>
+      <ul class="profile-list">
+        <li class="profile-list__item">
+          Teaching Assistant — UW EE 497/598 Engineering Entrepreneurial Capstone
+          <span class="profile-meta">(2026)</span>
         </li>
-        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-          {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-          Teaching Assistant - UW EE 419/565 Computer Communication Networks 
-          <span style="color: var(--global-text-color-light)">(Spring 2025)</span>
-          {%- comment -%} </a> {%- endcomment -%}
+        <li class="profile-list__item">
+          Teaching Assistant — UW EE 419/565 Computer Communication Networks
+          <span class="profile-meta">(Spring 2025)</span>
         </li>
-        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-          {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-          Teaching Assistant - UW EE 417/506 Modern Wireless Communications 
-          <span style="color: var(--global-text-color-light)">(Winter 2025)</span>
-          {%- comment -%} </a> {%- endcomment -%}
+        <li class="profile-list__item">
+          Teaching Assistant — UW EE 417/506 Modern Wireless Communications
+          <span class="profile-meta">(Winter 2025)</span>
         </li>
-        <li style="padding: 0.3rem; margin-bottom: 0.rem; border-left: 3px; border-radius: 4px;">
-          {%- comment -%} <a href="#" style="text-decoration: none; color: inherit;"> {%- endcomment -%}
-          Teaching Assistant - UW EE 215 Fundamentals of Electrical Engineering 
-          <span style="color: var(--global-text-color-light)">(Winter 2024)</span>
-          {%- comment -%} </a> {%- endcomment -%}
+        <li class="profile-list__item">
+          Teaching Assistant — UW EE 215 Fundamentals of Electrical Engineering
+          <span class="profile-meta">(Winter 2024)</span>
         </li>
       </ul>
-    </div>
-    {%- comment -%}
-      <ul>
-        <li>UW EE 215 Fundamentals of Electrical Engineering (TA)</li>
-        <li>UW EE 506 Fundamentals of Wireless Communication (TA)</li>
-        <li>UW EE 419/565 Computer Communication Networks (TA)</li>
-      </ul>
-    {%- endcomment -%}
+    </section>
   </article>
 </div>
