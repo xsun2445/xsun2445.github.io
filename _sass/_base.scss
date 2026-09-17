@@ -1675,6 +1675,13 @@ html[data-theme="dark"] .career-logo:not(.career-logo--nvidia) {
 }
 
 
+.career-entry--three-line {
+  .career-identity,
+  .career-heading .profile-meta {
+    grid-row: 1 / span 3;
+  }
+}
+
 .career-role {
   grid-column: 2;
   grid-row: 1;
@@ -1704,6 +1711,11 @@ html[data-theme="dark"] .career-logo:not(.career-logo--nvidia) {
       text-decoration: none;
     }
   }
+}
+
+.career-detail--secondary {
+  grid-row: 3;
+  margin-top: 0.15rem;
 }
 
 .news {

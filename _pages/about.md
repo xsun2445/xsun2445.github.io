@@ -16,6 +16,6 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
 ---
 
-Hi👋! I am currently a 3rd year Ph.D. candidate at [University of Washington](https://www.washington.edu/) in the department of [Electrical and Computer Engineering](https://www.ece.uw.edu/). I am a member of the [Networking and Emerging Wireless Technologies Lab (NEWT)](https://newtlab.ece.uw.edu/), working on wireless and mobile systems under the supervision of Prof. [Akshay Gadre](https://www.akshaygadre.com/).
+Hi👋! I am currently a 4th year Ph.D. candidate at [University of Washington](https://www.washington.edu/) in the department of [Electrical and Computer Engineering](https://www.ece.uw.edu/). I am a member of the [Networking and Emerging Wireless Technologies Lab (NEWT)](https://newtlab.ece.uw.edu/), working on wireless and mobile systems under the supervision of Prof. [Akshay Gadre](https://www.akshaygadre.com/).
 
 I am passionate about building systems that solve exciting and impactful real-world challenges, and my work aims to push the boundaries of wireless sensing through innovative system design. Currently, my research focuses on practical mmWave sensing and imaging systems, building **distributed and coherent radar systems** that achieve high-fidelity imaging ([MulDar](/muldar/)) and enable new sensing capabilities ([POLySight](/polysight/)) on commodity hardware.
