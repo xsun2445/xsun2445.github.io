@@ -2,10 +2,14 @@
   venue: "MobiSys Rising Star"
   year: 2026
   video: https://youtu.be/oe36I1Y2GQU
-  slides:
+  slides: /assets/pdf/slides_mobisys_risingstar_practical_mmwave.pdf
+- title: "MulDar: Multi-Static mmWave Radar with Commodity Devices"
+  venue: "MobiSys"
+  year: 2026
+  slides: /assets/pdf/slides_muldar_mobisys2026.pdf
 
 - title: "PolySight: Polarimetric mmWave Imaging with Commodity Devices"
   venue: "SenSys"
   year: 2026
   video: https://youtu.be/qTT2pcDQtlw
-  slides:
+  slides: /assets/pdf/slides_sensys_polysight_xinghua_sun.pdf
